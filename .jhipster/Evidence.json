@@ -1,0 +1,47 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141856",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "evidence",
+  "fields": [
+    {
+      "fieldName": "id2Trining",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "id2Requirents",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "expiration",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Evidence",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "training",
+      "otherEntityRelationshipName": "evidence",
+      "ownerSide": false,
+      "relationshipName": "training",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

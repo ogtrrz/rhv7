@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Employee.
+    -->
+    <changeSet id="20230418141852-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="rel_employee__training"
+                                 constraintName="fk_rel_employee__training__employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="training_id"
+                                 baseTableName="rel_employee__training"
+                                 constraintName="fk_rel_employee__training__training_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="training"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="rel_employee__todo"
+                                 constraintName="fk_rel_employee__todo__employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="todo_id"
+                                 baseTableName="rel_employee__todo"
+                                 constraintName="fk_rel_employee__todo__todo_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="to_do"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="rel_employee__historic_data"
+                                 constraintName="fk_rel_employee__historic_data__employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="historic_data_id"
+                                 baseTableName="rel_employee__historic_data"
+                                 constraintName="fk_rel_employee__historic_data__historic_data_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="historic_data"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="employee"
+                                 constraintName="fk_employee__employee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+    </changeSet>
+</databaseChangeLog>

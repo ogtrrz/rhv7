@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141857",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "historic_data",
+  "fields": [
+    {
+      "fieldName": "id2Employee",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "HistoricData",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "user",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "historicData",
+      "ownerSide": false,
+      "relationshipName": "employee",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

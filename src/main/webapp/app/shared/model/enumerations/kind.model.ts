@@ -1,0 +1,7 @@
+export enum Kind {
+  CERTIFICATE = 'CERTIFICATE',
+
+  ONTHEJOB = 'ONTHEJOB',
+
+  COURSE = 'COURSE',
+}

@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141854",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "requirents",
+  "fields": [
+    {
+      "fieldName": "id2Course",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "expirationInMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "kind",
+      "fieldType": "Kind",
+      "fieldValues": "CERTIFICATE,ONTHEJOB,COURSE"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Requirents",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "requirents",
+      "ownerSide": false,
+      "relationshipName": "code",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

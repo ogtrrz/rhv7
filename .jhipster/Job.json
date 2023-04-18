@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141851",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "job",
+  "fields": [
+    {
+      "fieldName": "jobTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "rol",
+      "fieldType": "Rol",
+      "fieldValues": "OPERATIONAL,SUPERVISOR,MANAGER"
+    },
+    {
+      "fieldName": "handling",
+      "fieldType": "Handling",
+      "fieldValues": "RAMP,CHECKIN,MULTITASK"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Job",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "job",
+      "ownerSide": true,
+      "relationshipName": "course",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "user",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "job",
+      "ownerSide": true,
+      "relationshipName": "employee",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}
