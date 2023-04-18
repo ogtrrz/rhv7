@@ -1,0 +1,138 @@
+
+entity Job {
+	jobTitle String maxlength(100) required,
+    rol Rol,
+    handling Handling
+}
+
+entity Employee {
+	user String maxlength(100) required,
+	firstName String maxlength(100) required,
+	lastName String maxlength(100) required,
+	email String,// pattern(/^[A-Z0-9+_.-]+@[A-Z0-9.-]+$/),
+	phoneNumber String,// pattern(/^[0-9]{10}$/),
+	hireDate Instant,
+    emergencyContact String maxlength(100),
+    emergencyPhone String,// pattern(/^[0-9]{10}$/),
+    blodeType String maxlength(2),
+    allergies String maxlength(500),
+    birthDate Instant,
+    note String maxlength(2000)
+}
+
+entity Course {
+	code String maxlength(20) required,
+    name String maxlength(100) required,
+    expirationInMonth Integer,
+    typeCourse TypeCourse, 
+    autorizationBy String maxlength(100),
+    durationAuthorizationInMonth Integer,
+	description String maxlength(500),
+    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+}
+//Modificado porque genera errores el nombre Requirements en la construccion del webapp
+entity Requirents {
+	code String maxlength(20) required,
+    expirationInMonth Integer,
+    kind Kind,
+    description String
+}
+
+entity Training {
+	code String maxlength(20) required,
+    date Instant,
+	expiry Instant
+    
+}
+
+entity Evidence {
+	description String maxlength(500) required,
+    expiration Instant,
+    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+}
+
+entity HistoricData {
+	name String maxlength(100) required,
+    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+}
+
+entity ToDo {
+	date Instant,
+    description String maxlength(100) required,
+    state StateToDo, 
+    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+}
+
+enum StateToDo {
+	NEW, CHECK
+}
+
+enum TypeCourse {
+	PRESENT, REMOTE, ONLINE, WBT 
+}
+
+enum Rol {
+    OPERATIONAL, SUPERVISOR, MANAGER
+}
+
+enum Handling {
+	RAMP, CHECKIN, MULTITASK
+}
+
+enum Kind {
+	CERTIFICATE, ONTHEJOB, COURSE
+}
+
+relationship ManyToMany {
+	Job to Course{job}
+}
+
+relationship ManyToMany {
+	Job to Employee{job}
+}
+
+relationship ManyToMany {
+	Course to Training{course}
+}
+
+relationship ManyToMany {
+	Employee to Training{employee}
+}
+
+relationship ManyToMany {
+	Course{requirents} to Requirents{course}
+}
+
+relationship ManyToMany {
+	Training to Evidence{training}
+}
+
+relationship ManyToMany {
+	Employee to ToDo{employee}
+}
+
+relationship ManyToMany {
+	Employee to HistoricData{employee}
+}
+
+relationship OneToMany {
+	Employee{manager} to Employee
+}
+
+relationship OneToMany {
+	Course{reqCourse} to Course
+}
+
+paginate * with pagination
+
+dto * with mapstruct
+
+service all with serviceClass
+//service all with serviceImpl
+
+//search all with elasticsearch
+
+
+
+
+
