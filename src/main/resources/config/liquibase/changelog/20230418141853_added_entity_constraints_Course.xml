@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Course.
+    -->
+    <changeSet id="20230418141853-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="course_id"
+                                 baseTableName="rel_course__training"
+                                 constraintName="fk_rel_course__training__course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course"/>
+
+        <addForeignKeyConstraint baseColumnNames="training_id"
+                                 baseTableName="rel_course__training"
+                                 constraintName="fk_rel_course__training__training_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="training"/>
+
+        <addForeignKeyConstraint baseColumnNames="course_id"
+                                 baseTableName="rel_course__requirents"
+                                 constraintName="fk_rel_course__requirents__course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course"/>
+
+        <addForeignKeyConstraint baseColumnNames="requirents_id"
+                                 baseTableName="rel_course__requirents"
+                                 constraintName="fk_rel_course__requirents__requirents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="requirents"/>
+
+        <addForeignKeyConstraint baseColumnNames="course_id"
+                                 baseTableName="course"
+                                 constraintName="fk_course__course_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="course"/>
+    </changeSet>
+</databaseChangeLog>

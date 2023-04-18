@@ -1,0 +1,63 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141855",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "training",
+  "fields": [
+    {
+      "fieldName": "id2Course",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "id2Employee",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Training",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "description",
+      "otherEntityName": "evidence",
+      "otherEntityRelationshipName": "training",
+      "ownerSide": true,
+      "relationshipName": "evidence",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "training",
+      "ownerSide": false,
+      "relationshipName": "course",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "user",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "training",
+      "ownerSide": false,
+      "relationshipName": "employee",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

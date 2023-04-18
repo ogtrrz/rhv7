@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141858",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "to_do",
+  "fields": [
+    {
+      "fieldName": "id2Employee",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "StateToDo",
+      "fieldValues": "NEW,CHECK"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ToDo",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "user",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "todo",
+      "ownerSide": false,
+      "relationshipName": "employee",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,98 @@
+{
+  "applications": "*",
+  "changelogDate": "20230418141853",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "course",
+  "fields": [
+    {
+      "fieldName": "id2Job",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "expirationInMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "typeCourse",
+      "fieldType": "TypeCourse",
+      "fieldValues": "PRESENT,REMOTE,ONLINE,WBT"
+    },
+    {
+      "fieldName": "autorizationBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "durationAuthorizationInMonth",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Course",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "reqCourse",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "training",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": true,
+      "relationshipName": "training",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "requirents",
+      "otherEntityRelationshipName": "code",
+      "ownerSide": true,
+      "relationshipName": "requirents",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "reqCourse",
+      "relationshipName": "course",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "jobTitle",
+      "otherEntityName": "job",
+      "otherEntityRelationshipName": "course",
+      "ownerSide": false,
+      "relationshipName": "job",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}
