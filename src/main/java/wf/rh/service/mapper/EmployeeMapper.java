@@ -29,7 +29,7 @@ public interface EmployeeMapper extends EntityMapper<EmployeeDTO, Employee> {
     Employee toEntity(EmployeeDTO employeeDTO);
 
     @Named("employeeId")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     EmployeeDTO toDtoEmployeeId(Employee employee);
 

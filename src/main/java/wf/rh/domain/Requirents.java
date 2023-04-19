@@ -42,7 +42,7 @@ public class Requirents implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "requirents")
+    @ManyToMany(mappedBy = "requirents", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties(value = { "reqCourses", "trainings", "requirents", "course", "jobs" }, allowSetters = true)
     private Set<Course> codes = new HashSet<>();
 
