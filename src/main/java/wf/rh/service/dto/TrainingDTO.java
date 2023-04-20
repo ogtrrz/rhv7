@@ -27,6 +27,14 @@ public class TrainingDTO implements Serializable {
 
     private Instant expiry;
 
+    private String created;
+
+    private Instant createdAt;
+
+    private String edited;
+
+    private Instant editedAt;
+
     private Set<EvidenceDTO> evidences = new HashSet<>();
 
     public Long getId() {
@@ -77,6 +85,38 @@ public class TrainingDTO implements Serializable {
         this.expiry = expiry;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return edited;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<EvidenceDTO> getEvidences() {
         return evidences;
     }
@@ -116,6 +156,10 @@ public class TrainingDTO implements Serializable {
             ", code='" + getCode() + "'" +
             ", date='" + getDate() + "'" +
             ", expiry='" + getExpiry() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             ", evidences=" + getEvidences() +
             "}";
     }

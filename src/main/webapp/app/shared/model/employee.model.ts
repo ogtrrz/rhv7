@@ -19,6 +19,10 @@ export interface IEmployee {
   allergies?: string | null;
   birthDate?: string | null;
   note?: string | null;
+  created?: string | null;
+  createdAt?: string | null;
+  edited?: string | null;
+  editedAt?: string | null;
   managers?: IEmployee[] | null;
   trainings?: ITraining[] | null;
   todos?: IToDo[] | null;

@@ -73,6 +73,18 @@ public class Employee implements Serializable {
     @Column(name = "note", length = 2000)
     private String note;
 
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
+
     @OneToMany(mappedBy = "employee")
     @JsonIgnoreProperties(value = { "managers", "trainings", "todos", "historicData", "employee", "jobs" }, allowSetters = true)
     private Set<Employee> managers = new HashSet<>();
@@ -296,6 +308,58 @@ public class Employee implements Serializable {
         this.note = note;
     }
 
+    public String getCreated() {
+        return this.created;
+    }
+
+    public Employee created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Employee createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public Employee edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public Employee editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<Employee> getManagers() {
         return this.managers;
     }
@@ -483,6 +547,10 @@ public class Employee implements Serializable {
             ", allergies='" + getAllergies() + "'" +
             ", birthDate='" + getBirthDate() + "'" +
             ", note='" + getNote() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

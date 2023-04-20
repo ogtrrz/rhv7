@@ -50,6 +50,9 @@ export const RequirentsUpdate = () => {
   }, [updateSuccess]);
 
   const saveEntity = values => {
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
+
     const entity = {
       ...requirentsEntity,
       ...values,
@@ -64,10 +67,15 @@ export const RequirentsUpdate = () => {
 
   const defaultValues = () =>
     isNew
-      ? {}
+      ? {
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
+        }
       : {
           kind: 'CERTIFICATE',
           ...requirentsEntity,
+          createdAt: convertDateTimeFromServer(requirentsEntity.createdAt),
+          editedAt: convertDateTimeFromServer(requirentsEntity.editedAt),
         };
 
   return (
@@ -113,6 +121,24 @@ export const RequirentsUpdate = () => {
                 ))}
               </ValidatedField>
               <ValidatedField label="Description" id="requirents-description" name="description" data-cy="description" type="text" />
+              <ValidatedField label="Created" id="requirents-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="requirents-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="requirents-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="requirents-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/requirents" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

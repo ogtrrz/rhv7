@@ -82,6 +82,18 @@ class EmployeeResourceIT {
     private static final String DEFAULT_NOTE = "AAAAAAAAAA";
     private static final String UPDATED_NOTE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/employees";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -128,7 +140,11 @@ class EmployeeResourceIT {
             .blodeType(DEFAULT_BLODE_TYPE)
             .allergies(DEFAULT_ALLERGIES)
             .birthDate(DEFAULT_BIRTH_DATE)
-            .note(DEFAULT_NOTE);
+            .note(DEFAULT_NOTE)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return employee;
     }
 
@@ -152,7 +168,11 @@ class EmployeeResourceIT {
             .blodeType(UPDATED_BLODE_TYPE)
             .allergies(UPDATED_ALLERGIES)
             .birthDate(UPDATED_BIRTH_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return employee;
     }
 
@@ -188,6 +208,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getAllergies()).isEqualTo(DEFAULT_ALLERGIES);
         assertThat(testEmployee.getBirthDate()).isEqualTo(DEFAULT_BIRTH_DATE);
         assertThat(testEmployee.getNote()).isEqualTo(DEFAULT_NOTE);
+        assertThat(testEmployee.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testEmployee.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testEmployee.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testEmployee.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -287,7 +311,11 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.[*].blodeType").value(hasItem(DEFAULT_BLODE_TYPE)))
             .andExpect(jsonPath("$.[*].allergies").value(hasItem(DEFAULT_ALLERGIES)))
             .andExpect(jsonPath("$.[*].birthDate").value(hasItem(DEFAULT_BIRTH_DATE.toString())))
-            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -331,7 +359,11 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.blodeType").value(DEFAULT_BLODE_TYPE))
             .andExpect(jsonPath("$.allergies").value(DEFAULT_ALLERGIES))
             .andExpect(jsonPath("$.birthDate").value(DEFAULT_BIRTH_DATE.toString()))
-            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE));
+            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -366,7 +398,11 @@ class EmployeeResourceIT {
             .blodeType(UPDATED_BLODE_TYPE)
             .allergies(UPDATED_ALLERGIES)
             .birthDate(UPDATED_BIRTH_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         EmployeeDTO employeeDTO = employeeMapper.toDto(updatedEmployee);
 
         restEmployeeMockMvc
@@ -394,6 +430,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getAllergies()).isEqualTo(UPDATED_ALLERGIES);
         assertThat(testEmployee.getBirthDate()).isEqualTo(UPDATED_BIRTH_DATE);
         assertThat(testEmployee.getNote()).isEqualTo(UPDATED_NOTE);
+        assertThat(testEmployee.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEmployee.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testEmployee.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testEmployee.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -479,7 +519,8 @@ class EmployeeResourceIT {
             .hireDate(UPDATED_HIRE_DATE)
             .emergencyContact(UPDATED_EMERGENCY_CONTACT)
             .emergencyPhone(UPDATED_EMERGENCY_PHONE)
-            .blodeType(UPDATED_BLODE_TYPE);
+            .blodeType(UPDATED_BLODE_TYPE)
+            .created(UPDATED_CREATED);
 
         restEmployeeMockMvc
             .perform(
@@ -506,6 +547,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getAllergies()).isEqualTo(DEFAULT_ALLERGIES);
         assertThat(testEmployee.getBirthDate()).isEqualTo(DEFAULT_BIRTH_DATE);
         assertThat(testEmployee.getNote()).isEqualTo(DEFAULT_NOTE);
+        assertThat(testEmployee.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEmployee.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testEmployee.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testEmployee.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -533,7 +578,11 @@ class EmployeeResourceIT {
             .blodeType(UPDATED_BLODE_TYPE)
             .allergies(UPDATED_ALLERGIES)
             .birthDate(UPDATED_BIRTH_DATE)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restEmployeeMockMvc
             .perform(
@@ -560,6 +609,10 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getAllergies()).isEqualTo(UPDATED_ALLERGIES);
         assertThat(testEmployee.getBirthDate()).isEqualTo(UPDATED_BIRTH_DATE);
         assertThat(testEmployee.getNote()).isEqualTo(UPDATED_NOTE);
+        assertThat(testEmployee.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEmployee.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testEmployee.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testEmployee.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

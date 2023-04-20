@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -47,6 +49,18 @@ class RequirentsResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/requirents";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -79,7 +93,11 @@ class RequirentsResourceIT {
             .code(DEFAULT_CODE)
             .expirationInMonth(DEFAULT_EXPIRATION_IN_MONTH)
             .kind(DEFAULT_KIND)
-            .description(DEFAULT_DESCRIPTION);
+            .description(DEFAULT_DESCRIPTION)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return requirents;
     }
 
@@ -95,7 +113,11 @@ class RequirentsResourceIT {
             .code(UPDATED_CODE)
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return requirents;
     }
 
@@ -123,6 +145,10 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(DEFAULT_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(DEFAULT_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testRequirents.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testRequirents.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testRequirents.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testRequirents.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -178,7 +204,11 @@ class RequirentsResourceIT {
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].expirationInMonth").value(hasItem(DEFAULT_EXPIRATION_IN_MONTH)))
             .andExpect(jsonPath("$.[*].kind").value(hasItem(DEFAULT_KIND.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @Test
@@ -197,7 +227,11 @@ class RequirentsResourceIT {
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.expirationInMonth").value(DEFAULT_EXPIRATION_IN_MONTH))
             .andExpect(jsonPath("$.kind").value(DEFAULT_KIND.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -224,7 +258,11 @@ class RequirentsResourceIT {
             .code(UPDATED_CODE)
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         RequirentsDTO requirentsDTO = requirentsMapper.toDto(updatedRequirents);
 
         restRequirentsMockMvc
@@ -244,6 +282,10 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testRequirents.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testRequirents.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -327,7 +369,9 @@ class RequirentsResourceIT {
             .id2Course(UPDATED_ID_2_COURSE)
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .created(UPDATED_CREATED)
+            .edited(UPDATED_EDITED);
 
         restRequirentsMockMvc
             .perform(
@@ -346,6 +390,10 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testRequirents.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testRequirents.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -365,7 +413,11 @@ class RequirentsResourceIT {
             .code(UPDATED_CODE)
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restRequirentsMockMvc
             .perform(
@@ -384,6 +436,10 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testRequirents.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testRequirents.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

@@ -51,6 +51,8 @@ export const ToDoUpdate = () => {
 
   const saveEntity = values => {
     values.date = convertDateTimeToServer(values.date);
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
 
     const entity = {
       ...toDoEntity,
@@ -68,11 +70,15 @@ export const ToDoUpdate = () => {
     isNew
       ? {
           date: displayDefaultDateTime(),
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
         }
       : {
           state: 'NEW',
           ...toDoEntity,
           date: convertDateTimeFromServer(toDoEntity.date),
+          createdAt: convertDateTimeFromServer(toDoEntity.createdAt),
+          editedAt: convertDateTimeFromServer(toDoEntity.editedAt),
         };
 
   return (
@@ -119,6 +125,24 @@ export const ToDoUpdate = () => {
                 ))}
               </ValidatedField>
               <ValidatedField label="Link" id="to-do-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Created" id="to-do-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="to-do-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="to-do-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="to-do-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/to-do" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

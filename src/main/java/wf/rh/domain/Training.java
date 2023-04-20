@@ -41,6 +41,18 @@ public class Training implements Serializable {
     @Column(name = "expiry")
     private Instant expiry;
 
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
+
     @ManyToMany
     @JoinTable(
         name = "rel_training__evidence",
@@ -136,6 +148,58 @@ public class Training implements Serializable {
 
     public void setExpiry(Instant expiry) {
         this.expiry = expiry;
+    }
+
+    public String getCreated() {
+        return this.created;
+    }
+
+    public Training created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Training createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public Training edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public Training editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
     }
 
     public Set<Evidence> getEvidences() {
@@ -254,6 +318,10 @@ public class Training implements Serializable {
             ", code='" + getCode() + "'" +
             ", date='" + getDate() + "'" +
             ", expiry='" + getExpiry() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

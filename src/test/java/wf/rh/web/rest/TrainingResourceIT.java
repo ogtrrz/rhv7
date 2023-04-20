@@ -58,6 +58,18 @@ class TrainingResourceIT {
     private static final Instant DEFAULT_EXPIRY = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_EXPIRY = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/trainings";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -96,7 +108,11 @@ class TrainingResourceIT {
             .id2Employee(DEFAULT_ID_2_EMPLOYEE)
             .code(DEFAULT_CODE)
             .date(DEFAULT_DATE)
-            .expiry(DEFAULT_EXPIRY);
+            .expiry(DEFAULT_EXPIRY)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return training;
     }
 
@@ -112,7 +128,11 @@ class TrainingResourceIT {
             .id2Employee(UPDATED_ID_2_EMPLOYEE)
             .code(UPDATED_CODE)
             .date(UPDATED_DATE)
-            .expiry(UPDATED_EXPIRY);
+            .expiry(UPDATED_EXPIRY)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return training;
     }
 
@@ -140,6 +160,10 @@ class TrainingResourceIT {
         assertThat(testTraining.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testTraining.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testTraining.getExpiry()).isEqualTo(DEFAULT_EXPIRY);
+        assertThat(testTraining.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testTraining.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testTraining.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testTraining.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -195,7 +219,11 @@ class TrainingResourceIT {
             .andExpect(jsonPath("$.[*].id2Employee").value(hasItem(DEFAULT_ID_2_EMPLOYEE.intValue())))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE)))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
-            .andExpect(jsonPath("$.[*].expiry").value(hasItem(DEFAULT_EXPIRY.toString())));
+            .andExpect(jsonPath("$.[*].expiry").value(hasItem(DEFAULT_EXPIRY.toString())))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -231,7 +259,11 @@ class TrainingResourceIT {
             .andExpect(jsonPath("$.id2Employee").value(DEFAULT_ID_2_EMPLOYEE.intValue()))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
-            .andExpect(jsonPath("$.expiry").value(DEFAULT_EXPIRY.toString()));
+            .andExpect(jsonPath("$.expiry").value(DEFAULT_EXPIRY.toString()))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -258,7 +290,11 @@ class TrainingResourceIT {
             .id2Employee(UPDATED_ID_2_EMPLOYEE)
             .code(UPDATED_CODE)
             .date(UPDATED_DATE)
-            .expiry(UPDATED_EXPIRY);
+            .expiry(UPDATED_EXPIRY)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         TrainingDTO trainingDTO = trainingMapper.toDto(updatedTraining);
 
         restTrainingMockMvc
@@ -278,6 +314,10 @@ class TrainingResourceIT {
         assertThat(testTraining.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testTraining.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testTraining.getExpiry()).isEqualTo(UPDATED_EXPIRY);
+        assertThat(testTraining.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testTraining.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testTraining.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testTraining.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -357,7 +397,13 @@ class TrainingResourceIT {
         Training partialUpdatedTraining = new Training();
         partialUpdatedTraining.setId(training.getId());
 
-        partialUpdatedTraining.id2Course(UPDATED_ID_2_COURSE).id2Employee(UPDATED_ID_2_EMPLOYEE).date(UPDATED_DATE).expiry(UPDATED_EXPIRY);
+        partialUpdatedTraining
+            .id2Course(UPDATED_ID_2_COURSE)
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .date(UPDATED_DATE)
+            .expiry(UPDATED_EXPIRY)
+            .createdAt(UPDATED_CREATED_AT)
+            .editedAt(UPDATED_EDITED_AT);
 
         restTrainingMockMvc
             .perform(
@@ -376,6 +422,10 @@ class TrainingResourceIT {
         assertThat(testTraining.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testTraining.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testTraining.getExpiry()).isEqualTo(UPDATED_EXPIRY);
+        assertThat(testTraining.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testTraining.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testTraining.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testTraining.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -395,7 +445,11 @@ class TrainingResourceIT {
             .id2Employee(UPDATED_ID_2_EMPLOYEE)
             .code(UPDATED_CODE)
             .date(UPDATED_DATE)
-            .expiry(UPDATED_EXPIRY);
+            .expiry(UPDATED_EXPIRY)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restTrainingMockMvc
             .perform(
@@ -414,6 +468,10 @@ class TrainingResourceIT {
         assertThat(testTraining.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testTraining.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testTraining.getExpiry()).isEqualTo(UPDATED_EXPIRY);
+        assertThat(testTraining.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testTraining.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testTraining.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testTraining.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

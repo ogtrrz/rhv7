@@ -49,6 +49,18 @@ class ToDoResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/to-dos";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -81,7 +93,11 @@ class ToDoResourceIT {
             .date(DEFAULT_DATE)
             .description(DEFAULT_DESCRIPTION)
             .state(DEFAULT_STATE)
-            .link(DEFAULT_LINK);
+            .link(DEFAULT_LINK)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return toDo;
     }
 
@@ -97,7 +113,11 @@ class ToDoResourceIT {
             .date(UPDATED_DATE)
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return toDo;
     }
 
@@ -125,6 +145,10 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testToDo.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testToDo.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testToDo.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testToDo.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testToDo.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -180,7 +204,11 @@ class ToDoResourceIT {
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)));
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @Test
@@ -199,7 +227,11 @@ class ToDoResourceIT {
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK));
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -226,7 +258,11 @@ class ToDoResourceIT {
             .date(UPDATED_DATE)
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         ToDoDTO toDoDTO = toDoMapper.toDto(updatedToDo);
 
         restToDoMockMvc
@@ -246,6 +282,10 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testToDo.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testToDo.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testToDo.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -325,7 +365,7 @@ class ToDoResourceIT {
         ToDo partialUpdatedToDo = new ToDo();
         partialUpdatedToDo.setId(toDo.getId());
 
-        partialUpdatedToDo.description(UPDATED_DESCRIPTION).state(UPDATED_STATE);
+        partialUpdatedToDo.description(UPDATED_DESCRIPTION).state(UPDATED_STATE).created(UPDATED_CREATED).editedAt(UPDATED_EDITED_AT);
 
         restToDoMockMvc
             .perform(
@@ -344,6 +384,10 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testToDo.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testToDo.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testToDo.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -363,7 +407,11 @@ class ToDoResourceIT {
             .date(UPDATED_DATE)
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restToDoMockMvc
             .perform(
@@ -382,6 +430,10 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testToDo.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testToDo.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testToDo.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

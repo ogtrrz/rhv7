@@ -37,9 +37,29 @@ export const EvidenceDetail = () => {
           </dt>
           <dd>{evidenceEntity.id2Requirents}</dd>
           <dt>
+            <span id="id2Course">Id 2 Course</span>
+          </dt>
+          <dd>{evidenceEntity.id2Course}</dd>
+          <dt>
+            <span id="id2Employee">Id 2 Employee</span>
+          </dt>
+          <dd>{evidenceEntity.id2Employee}</dd>
+          <dt>
+            <span id="state">State</span>
+          </dt>
+          <dd>{evidenceEntity.state}</dd>
+          <dt>
+            <span id="kind">Kind</span>
+          </dt>
+          <dd>{evidenceEntity.kind}</dd>
+          <dt>
             <span id="description">Description</span>
           </dt>
           <dd>{evidenceEntity.description}</dd>
+          <dt>
+            <span id="note">Note</span>
+          </dt>
+          <dd>{evidenceEntity.note}</dd>
           <dt>
             <span id="expiration">Expiration</span>
           </dt>
@@ -50,6 +70,22 @@ export const EvidenceDetail = () => {
             <span id="link">Link</span>
           </dt>
           <dd>{evidenceEntity.link}</dd>
+          <dt>
+            <span id="created">Created</span>
+          </dt>
+          <dd>{evidenceEntity.created}</dd>
+          <dt>
+            <span id="createdAt">Created At</span>
+          </dt>
+          <dd>{evidenceEntity.createdAt ? <TextFormat value={evidenceEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="edited">Edited</span>
+          </dt>
+          <dd>{evidenceEntity.edited}</dd>
+          <dt>
+            <span id="editedAt">Edited At</span>
+          </dt>
+          <dd>{evidenceEntity.editedAt ? <TextFormat value={evidenceEntity.editedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
         </dl>
         <Button tag={Link} to="/evidence" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

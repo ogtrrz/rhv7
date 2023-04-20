@@ -24,7 +24,7 @@ public interface JobMapper extends EntityMapper<JobDTO, Job> {
     Job toEntity(JobDTO jobDTO);
 
     @Named("courseCode")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "code", source = "code")
     CourseDTO toDtoCourseCode(Course course);
@@ -35,7 +35,7 @@ public interface JobMapper extends EntityMapper<JobDTO, Job> {
     }
 
     @Named("employeeUser")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "user", source = "user")
     EmployeeDTO toDtoEmployeeUser(Employee employee);

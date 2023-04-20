@@ -80,6 +80,22 @@ export const EmployeeDetail = () => {
             <span id="note">Note</span>
           </dt>
           <dd>{employeeEntity.note}</dd>
+          <dt>
+            <span id="created">Created</span>
+          </dt>
+          <dd>{employeeEntity.created}</dd>
+          <dt>
+            <span id="createdAt">Created At</span>
+          </dt>
+          <dd>{employeeEntity.createdAt ? <TextFormat value={employeeEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="edited">Edited</span>
+          </dt>
+          <dd>{employeeEntity.edited}</dd>
+          <dt>
+            <span id="editedAt">Edited At</span>
+          </dt>
+          <dd>{employeeEntity.editedAt ? <TextFormat value={employeeEntity.editedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>Training</dt>
           <dd>
             {employeeEntity.trainings

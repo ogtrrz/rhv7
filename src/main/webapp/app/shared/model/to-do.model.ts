@@ -9,6 +9,10 @@ export interface IToDo {
   description?: string;
   state?: StateToDo | null;
   link?: string | null;
+  created?: string | null;
+  createdAt?: string | null;
+  edited?: string | null;
+  editedAt?: string | null;
   employees?: IEmployee[] | null;
 }
 

@@ -48,6 +48,22 @@ export const TrainingDetail = () => {
             <span id="expiry">Expiry</span>
           </dt>
           <dd>{trainingEntity.expiry ? <TextFormat value={trainingEntity.expiry} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="created">Created</span>
+          </dt>
+          <dd>{trainingEntity.created}</dd>
+          <dt>
+            <span id="createdAt">Created At</span>
+          </dt>
+          <dd>{trainingEntity.createdAt ? <TextFormat value={trainingEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="edited">Edited</span>
+          </dt>
+          <dd>{trainingEntity.edited}</dd>
+          <dt>
+            <span id="editedAt">Edited At</span>
+          </dt>
+          <dd>{trainingEntity.editedAt ? <TextFormat value={trainingEntity.editedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>Evidence</dt>
           <dd>
             {trainingEntity.evidences

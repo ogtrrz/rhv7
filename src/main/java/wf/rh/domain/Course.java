@@ -2,6 +2,7 @@ package wf.rh.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -57,6 +58,18 @@ public class Course implements Serializable {
 
     @Column(name = "link")
     private String link;
+
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
 
     @OneToMany(mappedBy = "course")
     @JsonIgnoreProperties(value = { "reqCourses", "trainings", "requirents", "course", "jobs" }, allowSetters = true)
@@ -220,6 +233,58 @@ public class Course implements Serializable {
         this.link = link;
     }
 
+    public String getCreated() {
+        return this.created;
+    }
+
+    public Course created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Course createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public Course edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public Course editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<Course> getReqCourses() {
         return this.reqCourses;
     }
@@ -378,6 +443,10 @@ public class Course implements Serializable {
             ", durationAuthorizationInMonth=" + getDurationAuthorizationInMonth() +
             ", description='" + getDescription() + "'" +
             ", link='" + getLink() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

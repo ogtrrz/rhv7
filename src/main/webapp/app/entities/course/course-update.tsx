@@ -61,6 +61,9 @@ export const CourseUpdate = () => {
   }, [updateSuccess]);
 
   const saveEntity = values => {
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
+
     const entity = {
       ...courseEntity,
       ...values,
@@ -78,10 +81,15 @@ export const CourseUpdate = () => {
 
   const defaultValues = () =>
     isNew
-      ? {}
+      ? {
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
+        }
       : {
           typeCourse: 'PRESENT',
           ...courseEntity,
+          createdAt: convertDateTimeFromServer(courseEntity.createdAt),
+          editedAt: convertDateTimeFromServer(courseEntity.editedAt),
           trainings: courseEntity?.trainings?.map(e => e.id.toString()),
           requirents: courseEntity?.requirents?.map(e => e.id.toString()),
           course: courseEntity?.course?.id,
@@ -168,6 +176,24 @@ export const CourseUpdate = () => {
                 }}
               />
               <ValidatedField label="Link" id="course-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Created" id="course-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="course-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="course-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="course-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
               <ValidatedField label="Training" id="course-training" data-cy="training" type="select" multiple name="trainings">
                 <option value="" key="0" />
                 {trainings

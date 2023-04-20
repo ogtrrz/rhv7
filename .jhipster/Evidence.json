@@ -14,9 +14,33 @@
       "fieldType": "Long"
     },
     {
+      "fieldName": "id2Course",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "id2Employee",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "StateToDo",
+      "fieldValues": "NEW,CHECK"
+    },
+    {
+      "fieldName": "kind",
+      "fieldType": "Kind",
+      "fieldValues": "CERTIFICATE,ONTHEJOB,COURSE"
+    },
+    {
       "fieldName": "description",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "500"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "500"
     },
     {
@@ -26,6 +50,22 @@
     {
       "fieldName": "link",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "edited",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editedAt",
+      "fieldType": "Instant"
     }
   ],
   "fluentMethods": true,

@@ -1,6 +1,7 @@
 package wf.rh.service.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 import javax.validation.constraints.*;
 
@@ -19,6 +20,14 @@ public class HistoricDataDTO implements Serializable {
     private String name;
 
     private String link;
+
+    private String created;
+
+    private Instant createdAt;
+
+    private String edited;
+
+    private Instant editedAt;
 
     public Long getId() {
         return id;
@@ -52,6 +61,38 @@ public class HistoricDataDTO implements Serializable {
         this.link = link;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return edited;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -81,6 +122,10 @@ public class HistoricDataDTO implements Serializable {
             ", id2Employee=" + getId2Employee() +
             ", name='" + getName() + "'" +
             ", link='" + getLink() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }
