@@ -18,7 +18,11 @@ entity Employee {
     blodeType String maxlength(2),
     allergies String maxlength(500),
     birthDate Instant,
-    note String maxlength(2000)
+    note String maxlength(2000),
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 
 entity Course {
@@ -30,7 +34,11 @@ entity Course {
     autorizationBy String maxlength(100),
     durationAuthorizationInMonth Integer,
 	description String maxlength(500),
-    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    link String,// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+	created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 //Modificado porque genera errores el nombre Requirements en la construccion del webapp
 entity Requirents {
@@ -38,7 +46,11 @@ entity Requirents {
 	code String maxlength(20) required,
     expirationInMonth Integer,
     kind Kind,
-    description String
+    description String,
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 
 entity Training {
@@ -46,22 +58,39 @@ entity Training {
 	id2Employee Long,
 	code String maxlength(20) required,
     date Instant,
-	expiry Instant
+	expiry Instant,
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
     
 }
 
 entity Evidence {
 	id2Trining Long,
     id2Requirents Long,
-	description String maxlength(500) required,
+    id2Course Long,
+    id2Employee Long,
+	state StateToDo,
+    kind Kind,
+    description String maxlength(500) required,
+    note String maxlength(500)
     expiration Instant,
-    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    link String,// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 
 entity HistoricData {
 id2Employee Long,
 	name String maxlength(100) required,
-    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    link String,// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 
 entity ToDo {
@@ -69,7 +98,11 @@ id2Employee Long,
 	date Instant,
     description String maxlength(100) required,
     state StateToDo, 
-    link String// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    link String,// pattern(/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/)
+    created String,
+    createdAt Instant,
+    edited String,
+    editedAt Instant,
 }
 
 enum StateToDo {
