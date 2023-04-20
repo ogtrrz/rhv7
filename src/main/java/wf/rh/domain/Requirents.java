@@ -2,6 +2,7 @@ package wf.rh.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -42,7 +43,19 @@ public class Requirents implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "requirents", cascade = CascadeType.REMOVE)
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
+
+    @ManyToMany(mappedBy = "requirents")
     @JsonIgnoreProperties(value = { "reqCourses", "trainings", "requirents", "course", "jobs" }, allowSetters = true)
     private Set<Course> codes = new HashSet<>();
 
@@ -126,6 +139,58 @@ public class Requirents implements Serializable {
         this.description = description;
     }
 
+    public String getCreated() {
+        return this.created;
+    }
+
+    public Requirents created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Requirents createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public Requirents edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public Requirents editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<Course> getCodes() {
         return this.codes;
     }
@@ -186,6 +251,10 @@ public class Requirents implements Serializable {
             ", expirationInMonth=" + getExpirationInMonth() +
             ", kind='" + getKind() + "'" +
             ", description='" + getDescription() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

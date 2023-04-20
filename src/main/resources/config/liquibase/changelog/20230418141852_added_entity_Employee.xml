@@ -53,6 +53,18 @@
             <column name="note" type="varchar(2000)">
                 <constraints nullable="true" />
             </column>
+            <column name="created" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
             <column name="employee_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -60,6 +72,8 @@
         </createTable>
         <dropDefaultValue tableName="employee" columnName="hire_date" columnDataType="${datetimeType}"/>
         <dropDefaultValue tableName="employee" columnName="birth_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="employee" columnName="created_at" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="employee" columnName="edited_at" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <changeSet id="20230418141852-1-relations" author="jhipster">
@@ -128,6 +142,10 @@
             <column name="allergies" type="string"/>
             <column name="birth_date" type="date"/>
             <column name="note" type="string"/>
+            <column name="created" type="string"/>
+            <column name="created_at" type="date"/>
+            <column name="edited" type="string"/>
+            <column name="edited_at" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

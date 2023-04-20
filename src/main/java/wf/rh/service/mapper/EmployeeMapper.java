@@ -34,7 +34,7 @@ public interface EmployeeMapper extends EntityMapper<EmployeeDTO, Employee> {
     EmployeeDTO toDtoEmployeeId(Employee employee);
 
     @Named("trainingCode")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "code", source = "code")
     TrainingDTO toDtoTrainingCode(Training training);
@@ -45,7 +45,7 @@ public interface EmployeeMapper extends EntityMapper<EmployeeDTO, Employee> {
     }
 
     @Named("toDoDescription")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "description", source = "description")
     ToDoDTO toDtoToDoDescription(ToDo toDo);
@@ -56,7 +56,7 @@ public interface EmployeeMapper extends EntityMapper<EmployeeDTO, Employee> {
     }
 
     @Named("historicDataName")
-    @BeanMapping(ignoreByDefault = false)
+    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
     HistoricDataDTO toDtoHistoricDataName(HistoricData historicData);

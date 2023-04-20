@@ -1,6 +1,7 @@
 package wf.rh.service.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -38,6 +39,14 @@ public class CourseDTO implements Serializable {
     private String description;
 
     private String link;
+
+    private String created;
+
+    private Instant createdAt;
+
+    private String edited;
+
+    private Instant editedAt;
 
     private Set<TrainingDTO> trainings = new HashSet<>();
 
@@ -125,6 +134,38 @@ public class CourseDTO implements Serializable {
         this.link = link;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return edited;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<TrainingDTO> getTrainings() {
         return trainings;
     }
@@ -184,6 +225,10 @@ public class CourseDTO implements Serializable {
             ", durationAuthorizationInMonth=" + getDurationAuthorizationInMonth() +
             ", description='" + getDescription() + "'" +
             ", link='" + getLink() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             ", trainings=" + getTrainings() +
             ", requirents=" + getRequirents() +
             ", course=" + getCourse() +

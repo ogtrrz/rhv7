@@ -58,6 +58,8 @@ export const TrainingUpdate = () => {
   const saveEntity = values => {
     values.date = convertDateTimeToServer(values.date);
     values.expiry = convertDateTimeToServer(values.expiry);
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
 
     const entity = {
       ...trainingEntity,
@@ -77,11 +79,15 @@ export const TrainingUpdate = () => {
       ? {
           date: displayDefaultDateTime(),
           expiry: displayDefaultDateTime(),
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
         }
       : {
           ...trainingEntity,
           date: convertDateTimeFromServer(trainingEntity.date),
           expiry: convertDateTimeFromServer(trainingEntity.expiry),
+          createdAt: convertDateTimeFromServer(trainingEntity.createdAt),
+          editedAt: convertDateTimeFromServer(trainingEntity.editedAt),
           evidences: trainingEntity?.evidences?.map(e => e.id.toString()),
         };
 
@@ -127,6 +133,24 @@ export const TrainingUpdate = () => {
                 id="training-expiry"
                 name="expiry"
                 data-cy="expiry"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Created" id="training-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="training-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="training-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="training-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
                 type="datetime-local"
                 placeholder="YYYY-MM-DD HH:mm"
               />

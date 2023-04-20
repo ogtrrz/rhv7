@@ -48,6 +48,22 @@ export const ToDoDetail = () => {
             <span id="link">Link</span>
           </dt>
           <dd>{toDoEntity.link}</dd>
+          <dt>
+            <span id="created">Created</span>
+          </dt>
+          <dd>{toDoEntity.created}</dd>
+          <dt>
+            <span id="createdAt">Created At</span>
+          </dt>
+          <dd>{toDoEntity.createdAt ? <TextFormat value={toDoEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="edited">Edited</span>
+          </dt>
+          <dd>{toDoEntity.edited}</dd>
+          <dt>
+            <span id="editedAt">Edited At</span>
+          </dt>
+          <dd>{toDoEntity.editedAt ? <TextFormat value={toDoEntity.editedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
         </dl>
         <Button tag={Link} to="/to-do" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>

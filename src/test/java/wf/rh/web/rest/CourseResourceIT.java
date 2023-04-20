@@ -6,6 +6,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -69,6 +71,18 @@ class CourseResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/courses";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -111,7 +125,11 @@ class CourseResourceIT {
             .autorizationBy(DEFAULT_AUTORIZATION_BY)
             .durationAuthorizationInMonth(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH)
             .description(DEFAULT_DESCRIPTION)
-            .link(DEFAULT_LINK);
+            .link(DEFAULT_LINK)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return course;
     }
 
@@ -131,7 +149,11 @@ class CourseResourceIT {
             .autorizationBy(UPDATED_AUTORIZATION_BY)
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return course;
     }
 
@@ -163,6 +185,10 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testCourse.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testCourse.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testCourse.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testCourse.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -240,7 +266,11 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.[*].autorizationBy").value(hasItem(DEFAULT_AUTORIZATION_BY)))
             .andExpect(jsonPath("$.[*].durationAuthorizationInMonth").value(hasItem(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)));
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -280,7 +310,11 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.autorizationBy").value(DEFAULT_AUTORIZATION_BY))
             .andExpect(jsonPath("$.durationAuthorizationInMonth").value(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK));
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -311,7 +345,11 @@ class CourseResourceIT {
             .autorizationBy(UPDATED_AUTORIZATION_BY)
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         CourseDTO courseDTO = courseMapper.toDto(updatedCourse);
 
         restCourseMockMvc
@@ -335,6 +373,10 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(UPDATED_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testCourse.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testCourse.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -418,7 +460,9 @@ class CourseResourceIT {
             .name(UPDATED_NAME)
             .typeCourse(UPDATED_TYPE_COURSE)
             .autorizationBy(UPDATED_AUTORIZATION_BY)
-            .description(UPDATED_DESCRIPTION);
+            .description(UPDATED_DESCRIPTION)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED);
 
         restCourseMockMvc
             .perform(
@@ -441,6 +485,10 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testCourse.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testCourse.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -464,7 +512,11 @@ class CourseResourceIT {
             .autorizationBy(UPDATED_AUTORIZATION_BY)
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restCourseMockMvc
             .perform(
@@ -487,6 +539,10 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(UPDATED_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testCourse.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testCourse.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

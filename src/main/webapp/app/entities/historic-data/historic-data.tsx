@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Table } from 'reactstrap';
-import { Translate, getSortState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, TextFormat, getSortState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
@@ -112,6 +112,18 @@ export const HistoricData = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -126,6 +138,14 @@ export const HistoricData = () => {
                   <td>{historicData.id2Employee}</td>
                   <td>{historicData.name}</td>
                   <td>{historicData.link}</td>
+                  <td>{historicData.created}</td>
+                  <td>
+                    {historicData.createdAt ? <TextFormat type="date" value={historicData.createdAt} format={APP_DATE_FORMAT} /> : null}
+                  </td>
+                  <td>{historicData.edited}</td>
+                  <td>
+                    {historicData.editedAt ? <TextFormat type="date" value={historicData.editedAt} format={APP_DATE_FORMAT} /> : null}
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/historic-data/${historicData.id}`} color="info" size="sm" data-cy="entityDetailsButton">

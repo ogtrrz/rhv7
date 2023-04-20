@@ -10,6 +10,10 @@ export interface ITraining {
   code?: string;
   date?: string | null;
   expiry?: string | null;
+  created?: string | null;
+  createdAt?: string | null;
+  edited?: string | null;
+  editedAt?: string | null;
   evidences?: IEvidence[] | null;
   courses?: ICourse[] | null;
   employees?: IEmployee[] | null;

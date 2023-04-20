@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -40,6 +42,18 @@ class HistoricDataResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     private static final String ENTITY_API_URL = "/api/historic-data";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -67,7 +81,14 @@ class HistoricDataResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static HistoricData createEntity(EntityManager em) {
-        HistoricData historicData = new HistoricData().id2Employee(DEFAULT_ID_2_EMPLOYEE).name(DEFAULT_NAME).link(DEFAULT_LINK);
+        HistoricData historicData = new HistoricData()
+            .id2Employee(DEFAULT_ID_2_EMPLOYEE)
+            .name(DEFAULT_NAME)
+            .link(DEFAULT_LINK)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return historicData;
     }
 
@@ -78,7 +99,14 @@ class HistoricDataResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static HistoricData createUpdatedEntity(EntityManager em) {
-        HistoricData historicData = new HistoricData().id2Employee(UPDATED_ID_2_EMPLOYEE).name(UPDATED_NAME).link(UPDATED_LINK);
+        HistoricData historicData = new HistoricData()
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .name(UPDATED_NAME)
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return historicData;
     }
 
@@ -106,6 +134,10 @@ class HistoricDataResourceIT {
         assertThat(testHistoricData.getId2Employee()).isEqualTo(DEFAULT_ID_2_EMPLOYEE);
         assertThat(testHistoricData.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testHistoricData.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testHistoricData.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testHistoricData.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testHistoricData.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testHistoricData.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -163,7 +195,11 @@ class HistoricDataResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(historicData.getId().intValue())))
             .andExpect(jsonPath("$.[*].id2Employee").value(hasItem(DEFAULT_ID_2_EMPLOYEE.intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)));
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @Test
@@ -180,7 +216,11 @@ class HistoricDataResourceIT {
             .andExpect(jsonPath("$.id").value(historicData.getId().intValue()))
             .andExpect(jsonPath("$.id2Employee").value(DEFAULT_ID_2_EMPLOYEE.intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK));
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -202,7 +242,14 @@ class HistoricDataResourceIT {
         HistoricData updatedHistoricData = historicDataRepository.findById(historicData.getId()).get();
         // Disconnect from session so that the updates on updatedHistoricData are not directly saved in db
         em.detach(updatedHistoricData);
-        updatedHistoricData.id2Employee(UPDATED_ID_2_EMPLOYEE).name(UPDATED_NAME).link(UPDATED_LINK);
+        updatedHistoricData
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .name(UPDATED_NAME)
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         HistoricDataDTO historicDataDTO = historicDataMapper.toDto(updatedHistoricData);
 
         restHistoricDataMockMvc
@@ -220,6 +267,10 @@ class HistoricDataResourceIT {
         assertThat(testHistoricData.getId2Employee()).isEqualTo(UPDATED_ID_2_EMPLOYEE);
         assertThat(testHistoricData.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testHistoricData.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testHistoricData.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testHistoricData.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testHistoricData.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testHistoricData.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -301,7 +352,7 @@ class HistoricDataResourceIT {
         HistoricData partialUpdatedHistoricData = new HistoricData();
         partialUpdatedHistoricData.setId(historicData.getId());
 
-        partialUpdatedHistoricData.link(UPDATED_LINK);
+        partialUpdatedHistoricData.link(UPDATED_LINK).created(UPDATED_CREATED);
 
         restHistoricDataMockMvc
             .perform(
@@ -318,6 +369,10 @@ class HistoricDataResourceIT {
         assertThat(testHistoricData.getId2Employee()).isEqualTo(DEFAULT_ID_2_EMPLOYEE);
         assertThat(testHistoricData.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testHistoricData.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testHistoricData.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testHistoricData.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testHistoricData.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testHistoricData.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -332,7 +387,14 @@ class HistoricDataResourceIT {
         HistoricData partialUpdatedHistoricData = new HistoricData();
         partialUpdatedHistoricData.setId(historicData.getId());
 
-        partialUpdatedHistoricData.id2Employee(UPDATED_ID_2_EMPLOYEE).name(UPDATED_NAME).link(UPDATED_LINK);
+        partialUpdatedHistoricData
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .name(UPDATED_NAME)
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restHistoricDataMockMvc
             .perform(
@@ -349,6 +411,10 @@ class HistoricDataResourceIT {
         assertThat(testHistoricData.getId2Employee()).isEqualTo(UPDATED_ID_2_EMPLOYEE);
         assertThat(testHistoricData.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testHistoricData.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testHistoricData.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testHistoricData.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testHistoricData.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testHistoricData.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

@@ -41,11 +41,25 @@
             <column name="link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="created" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
             <column name="course_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="course" columnName="created_at" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="course" columnName="edited_at" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <changeSet id="20230418141853-1-relations" author="jhipster">
@@ -99,6 +113,10 @@
             <column name="duration_authorization_in_month" type="numeric"/>
             <column name="description" type="string"/>
             <column name="link" type="string"/>
+            <column name="created" type="string"/>
+            <column name="created_at" type="date"/>
+            <column name="edited" type="string"/>
+            <column name="edited_at" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

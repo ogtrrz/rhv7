@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Row, Col } from 'reactstrap';
-import {} from 'react-jhipster';
+import { TextFormat } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
@@ -64,6 +64,22 @@ export const CourseDetail = () => {
             <span id="link">Link</span>
           </dt>
           <dd>{courseEntity.link}</dd>
+          <dt>
+            <span id="created">Created</span>
+          </dt>
+          <dd>{courseEntity.created}</dd>
+          <dt>
+            <span id="createdAt">Created At</span>
+          </dt>
+          <dd>{courseEntity.createdAt ? <TextFormat value={courseEntity.createdAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
+          <dt>
+            <span id="edited">Edited</span>
+          </dt>
+          <dd>{courseEntity.edited}</dd>
+          <dt>
+            <span id="editedAt">Edited At</span>
+          </dt>
+          <dd>{courseEntity.editedAt ? <TextFormat value={courseEntity.editedAt} type="date" format={APP_DATE_FORMAT} /> : null}</dd>
           <dt>Training</dt>
           <dd>
             {courseEntity.trainings

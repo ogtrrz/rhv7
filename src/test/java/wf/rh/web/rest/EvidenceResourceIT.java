@@ -21,6 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import wf.rh.IntegrationTest;
 import wf.rh.domain.Evidence;
+import wf.rh.domain.enumeration.Kind;
+import wf.rh.domain.enumeration.StateToDo;
 import wf.rh.repository.EvidenceRepository;
 import wf.rh.service.dto.EvidenceDTO;
 import wf.rh.service.mapper.EvidenceMapper;
@@ -39,14 +41,41 @@ class EvidenceResourceIT {
     private static final Long DEFAULT_ID_2_REQUIRENTS = 1L;
     private static final Long UPDATED_ID_2_REQUIRENTS = 2L;
 
+    private static final Long DEFAULT_ID_2_COURSE = 1L;
+    private static final Long UPDATED_ID_2_COURSE = 2L;
+
+    private static final Long DEFAULT_ID_2_EMPLOYEE = 1L;
+    private static final Long UPDATED_ID_2_EMPLOYEE = 2L;
+
+    private static final StateToDo DEFAULT_STATE = StateToDo.NEW;
+    private static final StateToDo UPDATED_STATE = StateToDo.CHECK;
+
+    private static final Kind DEFAULT_KIND = Kind.CERTIFICATE;
+    private static final Kind UPDATED_KIND = Kind.ONTHEJOB;
+
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NOTE = "AAAAAAAAAA";
+    private static final String UPDATED_NOTE = "BBBBBBBBBB";
 
     private static final Instant DEFAULT_EXPIRATION = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_EXPIRATION = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
+
+    private static final String DEFAULT_CREATED = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_EDITED = "AAAAAAAAAA";
+    private static final String UPDATED_EDITED = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_EDITED_AT = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_EDITED_AT = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String ENTITY_API_URL = "/api/evidences";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -78,9 +107,18 @@ class EvidenceResourceIT {
         Evidence evidence = new Evidence()
             .id2Trining(DEFAULT_ID_2_TRINING)
             .id2Requirents(DEFAULT_ID_2_REQUIRENTS)
+            .id2Course(DEFAULT_ID_2_COURSE)
+            .id2Employee(DEFAULT_ID_2_EMPLOYEE)
+            .state(DEFAULT_STATE)
+            .kind(DEFAULT_KIND)
             .description(DEFAULT_DESCRIPTION)
+            .note(DEFAULT_NOTE)
             .expiration(DEFAULT_EXPIRATION)
-            .link(DEFAULT_LINK);
+            .link(DEFAULT_LINK)
+            .created(DEFAULT_CREATED)
+            .createdAt(DEFAULT_CREATED_AT)
+            .edited(DEFAULT_EDITED)
+            .editedAt(DEFAULT_EDITED_AT);
         return evidence;
     }
 
@@ -94,9 +132,18 @@ class EvidenceResourceIT {
         Evidence evidence = new Evidence()
             .id2Trining(UPDATED_ID_2_TRINING)
             .id2Requirents(UPDATED_ID_2_REQUIRENTS)
+            .id2Course(UPDATED_ID_2_COURSE)
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .state(UPDATED_STATE)
+            .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         return evidence;
     }
 
@@ -121,9 +168,18 @@ class EvidenceResourceIT {
         Evidence testEvidence = evidenceList.get(evidenceList.size() - 1);
         assertThat(testEvidence.getId2Trining()).isEqualTo(DEFAULT_ID_2_TRINING);
         assertThat(testEvidence.getId2Requirents()).isEqualTo(DEFAULT_ID_2_REQUIRENTS);
+        assertThat(testEvidence.getId2Course()).isEqualTo(DEFAULT_ID_2_COURSE);
+        assertThat(testEvidence.getId2Employee()).isEqualTo(DEFAULT_ID_2_EMPLOYEE);
+        assertThat(testEvidence.getState()).isEqualTo(DEFAULT_STATE);
+        assertThat(testEvidence.getKind()).isEqualTo(DEFAULT_KIND);
         assertThat(testEvidence.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testEvidence.getNote()).isEqualTo(DEFAULT_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(DEFAULT_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testEvidence.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testEvidence.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testEvidence.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testEvidence.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -177,9 +233,18 @@ class EvidenceResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(evidence.getId().intValue())))
             .andExpect(jsonPath("$.[*].id2Trining").value(hasItem(DEFAULT_ID_2_TRINING.intValue())))
             .andExpect(jsonPath("$.[*].id2Requirents").value(hasItem(DEFAULT_ID_2_REQUIRENTS.intValue())))
+            .andExpect(jsonPath("$.[*].id2Course").value(hasItem(DEFAULT_ID_2_COURSE.intValue())))
+            .andExpect(jsonPath("$.[*].id2Employee").value(hasItem(DEFAULT_ID_2_EMPLOYEE.intValue())))
+            .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
+            .andExpect(jsonPath("$.[*].kind").value(hasItem(DEFAULT_KIND.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
             .andExpect(jsonPath("$.[*].expiration").value(hasItem(DEFAULT_EXPIRATION.toString())))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)));
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
+            .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
+            .andExpect(jsonPath("$.[*].editedAt").value(hasItem(DEFAULT_EDITED_AT.toString())));
     }
 
     @Test
@@ -196,9 +261,18 @@ class EvidenceResourceIT {
             .andExpect(jsonPath("$.id").value(evidence.getId().intValue()))
             .andExpect(jsonPath("$.id2Trining").value(DEFAULT_ID_2_TRINING.intValue()))
             .andExpect(jsonPath("$.id2Requirents").value(DEFAULT_ID_2_REQUIRENTS.intValue()))
+            .andExpect(jsonPath("$.id2Course").value(DEFAULT_ID_2_COURSE.intValue()))
+            .andExpect(jsonPath("$.id2Employee").value(DEFAULT_ID_2_EMPLOYEE.intValue()))
+            .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
+            .andExpect(jsonPath("$.kind").value(DEFAULT_KIND.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE))
             .andExpect(jsonPath("$.expiration").value(DEFAULT_EXPIRATION.toString()))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK));
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
+            .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
+            .andExpect(jsonPath("$.editedAt").value(DEFAULT_EDITED_AT.toString()));
     }
 
     @Test
@@ -223,9 +297,18 @@ class EvidenceResourceIT {
         updatedEvidence
             .id2Trining(UPDATED_ID_2_TRINING)
             .id2Requirents(UPDATED_ID_2_REQUIRENTS)
+            .id2Course(UPDATED_ID_2_COURSE)
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .state(UPDATED_STATE)
+            .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
         EvidenceDTO evidenceDTO = evidenceMapper.toDto(updatedEvidence);
 
         restEvidenceMockMvc
@@ -242,9 +325,18 @@ class EvidenceResourceIT {
         Evidence testEvidence = evidenceList.get(evidenceList.size() - 1);
         assertThat(testEvidence.getId2Trining()).isEqualTo(UPDATED_ID_2_TRINING);
         assertThat(testEvidence.getId2Requirents()).isEqualTo(UPDATED_ID_2_REQUIRENTS);
+        assertThat(testEvidence.getId2Course()).isEqualTo(UPDATED_ID_2_COURSE);
+        assertThat(testEvidence.getId2Employee()).isEqualTo(UPDATED_ID_2_EMPLOYEE);
+        assertThat(testEvidence.getState()).isEqualTo(UPDATED_STATE);
+        assertThat(testEvidence.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testEvidence.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testEvidence.getNote()).isEqualTo(UPDATED_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(UPDATED_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testEvidence.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -324,7 +416,14 @@ class EvidenceResourceIT {
         Evidence partialUpdatedEvidence = new Evidence();
         partialUpdatedEvidence.setId(evidence.getId());
 
-        partialUpdatedEvidence.id2Requirents(UPDATED_ID_2_REQUIRENTS).description(UPDATED_DESCRIPTION);
+        partialUpdatedEvidence
+            .id2Requirents(UPDATED_ID_2_REQUIRENTS)
+            .id2Course(UPDATED_ID_2_COURSE)
+            .kind(UPDATED_KIND)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restEvidenceMockMvc
             .perform(
@@ -340,9 +439,18 @@ class EvidenceResourceIT {
         Evidence testEvidence = evidenceList.get(evidenceList.size() - 1);
         assertThat(testEvidence.getId2Trining()).isEqualTo(DEFAULT_ID_2_TRINING);
         assertThat(testEvidence.getId2Requirents()).isEqualTo(UPDATED_ID_2_REQUIRENTS);
-        assertThat(testEvidence.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testEvidence.getId2Course()).isEqualTo(UPDATED_ID_2_COURSE);
+        assertThat(testEvidence.getId2Employee()).isEqualTo(DEFAULT_ID_2_EMPLOYEE);
+        assertThat(testEvidence.getState()).isEqualTo(DEFAULT_STATE);
+        assertThat(testEvidence.getKind()).isEqualTo(UPDATED_KIND);
+        assertThat(testEvidence.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testEvidence.getNote()).isEqualTo(DEFAULT_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(DEFAULT_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testEvidence.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -360,9 +468,18 @@ class EvidenceResourceIT {
         partialUpdatedEvidence
             .id2Trining(UPDATED_ID_2_TRINING)
             .id2Requirents(UPDATED_ID_2_REQUIRENTS)
+            .id2Course(UPDATED_ID_2_COURSE)
+            .id2Employee(UPDATED_ID_2_EMPLOYEE)
+            .state(UPDATED_STATE)
+            .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
-            .link(UPDATED_LINK);
+            .link(UPDATED_LINK)
+            .created(UPDATED_CREATED)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restEvidenceMockMvc
             .perform(
@@ -378,9 +495,18 @@ class EvidenceResourceIT {
         Evidence testEvidence = evidenceList.get(evidenceList.size() - 1);
         assertThat(testEvidence.getId2Trining()).isEqualTo(UPDATED_ID_2_TRINING);
         assertThat(testEvidence.getId2Requirents()).isEqualTo(UPDATED_ID_2_REQUIRENTS);
+        assertThat(testEvidence.getId2Course()).isEqualTo(UPDATED_ID_2_COURSE);
+        assertThat(testEvidence.getId2Employee()).isEqualTo(UPDATED_ID_2_EMPLOYEE);
+        assertThat(testEvidence.getState()).isEqualTo(UPDATED_STATE);
+        assertThat(testEvidence.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testEvidence.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testEvidence.getNote()).isEqualTo(UPDATED_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(UPDATED_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);
+        assertThat(testEvidence.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test

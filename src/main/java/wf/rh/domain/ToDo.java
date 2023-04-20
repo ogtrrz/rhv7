@@ -43,6 +43,18 @@ public class ToDo implements Serializable {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
+
     @ManyToMany(mappedBy = "todos")
     @JsonIgnoreProperties(value = { "managers", "trainings", "todos", "historicData", "employee", "jobs" }, allowSetters = true)
     private Set<Employee> employees = new HashSet<>();
@@ -127,6 +139,58 @@ public class ToDo implements Serializable {
         this.link = link;
     }
 
+    public String getCreated() {
+        return this.created;
+    }
+
+    public ToDo created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public ToDo createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public ToDo edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public ToDo editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<Employee> getEmployees() {
         return this.employees;
     }
@@ -187,6 +251,10 @@ public class ToDo implements Serializable {
             ", description='" + getDescription() + "'" +
             ", state='" + getState() + "'" +
             ", link='" + getLink() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

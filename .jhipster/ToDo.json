@@ -27,6 +27,22 @@
     {
       "fieldName": "link",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "created",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "edited",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "editedAt",
+      "fieldType": "Instant"
     }
   ],
   "fluentMethods": true,

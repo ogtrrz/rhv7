@@ -142,6 +142,18 @@ export const Employee = () => {
                 <th className="hand" onClick={sort('note')}>
                   Note <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
+                </th>
                 <th>
                   Employee <FontAwesomeIcon icon="sort" />
                 </th>
@@ -169,6 +181,10 @@ export const Employee = () => {
                   <td>{employee.allergies}</td>
                   <td>{employee.birthDate ? <TextFormat type="date" value={employee.birthDate} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{employee.note}</td>
+                  <td>{employee.created}</td>
+                  <td>{employee.createdAt ? <TextFormat type="date" value={employee.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{employee.edited}</td>
+                  <td>{employee.editedAt ? <TextFormat type="date" value={employee.editedAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{employee.employee ? <Link to={`/employee/${employee.employee.id}`}>{employee.employee.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

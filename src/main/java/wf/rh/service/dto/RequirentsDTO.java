@@ -1,6 +1,7 @@
 package wf.rh.service.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 import javax.validation.constraints.*;
 import wf.rh.domain.enumeration.Kind;
@@ -24,6 +25,14 @@ public class RequirentsDTO implements Serializable {
     private Kind kind;
 
     private String description;
+
+    private String created;
+
+    private Instant createdAt;
+
+    private String edited;
+
+    private Instant editedAt;
 
     public Long getId() {
         return id;
@@ -73,6 +82,38 @@ public class RequirentsDTO implements Serializable {
         this.description = description;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return edited;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -104,6 +145,10 @@ public class RequirentsDTO implements Serializable {
             ", expirationInMonth=" + getExpirationInMonth() +
             ", kind='" + getKind() + "'" +
             ", description='" + getDescription() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

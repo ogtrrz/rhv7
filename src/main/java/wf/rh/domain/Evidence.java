@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import wf.rh.domain.enumeration.Kind;
+import wf.rh.domain.enumeration.StateToDo;
 
 /**
  * A Evidence.
@@ -30,16 +32,46 @@ public class Evidence implements Serializable {
     @Column(name = "id_2_requirents")
     private Long id2Requirents;
 
+    @Column(name = "id_2_course")
+    private Long id2Course;
+
+    @Column(name = "id_2_employee")
+    private Long id2Employee;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "state")
+    private StateToDo state;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "kind")
+    private Kind kind;
+
     @NotNull
     @Size(max = 500)
     @Column(name = "description", length = 500, nullable = false)
     private String description;
+
+    @Size(max = 500)
+    @Column(name = "note", length = 500)
+    private String note;
 
     @Column(name = "expiration")
     private Instant expiration;
 
     @Column(name = "link")
     private String link;
+
+    @Column(name = "created")
+    private String created;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "edited")
+    private String edited;
+
+    @Column(name = "edited_at")
+    private Instant editedAt;
 
     @ManyToMany(mappedBy = "evidences")
     @JsonIgnoreProperties(value = { "evidences", "courses", "employees" }, allowSetters = true)
@@ -86,6 +118,58 @@ public class Evidence implements Serializable {
         this.id2Requirents = id2Requirents;
     }
 
+    public Long getId2Course() {
+        return this.id2Course;
+    }
+
+    public Evidence id2Course(Long id2Course) {
+        this.setId2Course(id2Course);
+        return this;
+    }
+
+    public void setId2Course(Long id2Course) {
+        this.id2Course = id2Course;
+    }
+
+    public Long getId2Employee() {
+        return this.id2Employee;
+    }
+
+    public Evidence id2Employee(Long id2Employee) {
+        this.setId2Employee(id2Employee);
+        return this;
+    }
+
+    public void setId2Employee(Long id2Employee) {
+        this.id2Employee = id2Employee;
+    }
+
+    public StateToDo getState() {
+        return this.state;
+    }
+
+    public Evidence state(StateToDo state) {
+        this.setState(state);
+        return this;
+    }
+
+    public void setState(StateToDo state) {
+        this.state = state;
+    }
+
+    public Kind getKind() {
+        return this.kind;
+    }
+
+    public Evidence kind(Kind kind) {
+        this.setKind(kind);
+        return this;
+    }
+
+    public void setKind(Kind kind) {
+        this.kind = kind;
+    }
+
     public String getDescription() {
         return this.description;
     }
@@ -97,6 +181,19 @@ public class Evidence implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getNote() {
+        return this.note;
+    }
+
+    public Evidence note(String note) {
+        this.setNote(note);
+        return this;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public Instant getExpiration() {
@@ -123,6 +220,58 @@ public class Evidence implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getCreated() {
+        return this.created;
+    }
+
+    public Evidence created(String created) {
+        this.setCreated(created);
+        return this;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public Evidence createdAt(Instant createdAt) {
+        this.setCreatedAt(createdAt);
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return this.edited;
+    }
+
+    public Evidence edited(String edited) {
+        this.setEdited(edited);
+        return this;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return this.editedAt;
+    }
+
+    public Evidence editedAt(Instant editedAt) {
+        this.setEditedAt(editedAt);
+        return this;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
     }
 
     public Set<Training> getTrainings() {
@@ -182,9 +331,18 @@ public class Evidence implements Serializable {
             "id=" + getId() +
             ", id2Trining=" + getId2Trining() +
             ", id2Requirents=" + getId2Requirents() +
+            ", id2Course=" + getId2Course() +
+            ", id2Employee=" + getId2Employee() +
+            ", state='" + getState() + "'" +
+            ", kind='" + getKind() + "'" +
             ", description='" + getDescription() + "'" +
+            ", note='" + getNote() + "'" +
             ", expiration='" + getExpiration() + "'" +
             ", link='" + getLink() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             "}";
     }
 }

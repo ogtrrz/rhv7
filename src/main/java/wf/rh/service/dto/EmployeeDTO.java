@@ -51,6 +51,14 @@ public class EmployeeDTO implements Serializable {
     @Size(max = 2000)
     private String note;
 
+    private String created;
+
+    private Instant createdAt;
+
+    private String edited;
+
+    private Instant editedAt;
+
     private Set<TrainingDTO> trainings = new HashSet<>();
 
     private Set<ToDoDTO> todos = new HashSet<>();
@@ -171,6 +179,38 @@ public class EmployeeDTO implements Serializable {
         this.note = note;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEdited() {
+        return edited;
+    }
+
+    public void setEdited(String edited) {
+        this.edited = edited;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt(Instant editedAt) {
+        this.editedAt = editedAt;
+    }
+
     public Set<TrainingDTO> getTrainings() {
         return trainings;
     }
@@ -242,6 +282,10 @@ public class EmployeeDTO implements Serializable {
             ", allergies='" + getAllergies() + "'" +
             ", birthDate='" + getBirthDate() + "'" +
             ", note='" + getNote() + "'" +
+            ", created='" + getCreated() + "'" +
+            ", createdAt='" + getCreatedAt() + "'" +
+            ", edited='" + getEdited() + "'" +
+            ", editedAt='" + getEditedAt() + "'" +
             ", trainings=" + getTrainings() +
             ", todos=" + getTodos() +
             ", historicData=" + getHistoricData() +

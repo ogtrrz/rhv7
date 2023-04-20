@@ -118,6 +118,18 @@ export const Training = () => {
                 <th className="hand" onClick={sort('expiry')}>
                   Expiry <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -134,6 +146,10 @@ export const Training = () => {
                   <td>{training.code}</td>
                   <td>{training.date ? <TextFormat type="date" value={training.date} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{training.expiry ? <TextFormat type="date" value={training.expiry} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{training.created}</td>
+                  <td>{training.createdAt ? <TextFormat type="date" value={training.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{training.edited}</td>
+                  <td>{training.editedAt ? <TextFormat type="date" value={training.editedAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/training/${training.id}`} color="info" size="sm" data-cy="entityDetailsButton">

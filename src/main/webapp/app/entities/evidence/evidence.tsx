@@ -109,14 +109,41 @@ export const Evidence = () => {
                 <th className="hand" onClick={sort('id2Requirents')}>
                   Id 2 Requirents <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('id2Course')}>
+                  Id 2 Course <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('id2Employee')}>
+                  Id 2 Employee <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('state')}>
+                  State <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('kind')}>
+                  Kind <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('description')}>
                   Description <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('note')}>
+                  Note <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('expiration')}>
                   Expiration <FontAwesomeIcon icon="sort" />
                 </th>
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -131,9 +158,18 @@ export const Evidence = () => {
                   </td>
                   <td>{evidence.id2Trining}</td>
                   <td>{evidence.id2Requirents}</td>
+                  <td>{evidence.id2Course}</td>
+                  <td>{evidence.id2Employee}</td>
+                  <td>{evidence.state}</td>
+                  <td>{evidence.kind}</td>
                   <td>{evidence.description}</td>
+                  <td>{evidence.note}</td>
                   <td>{evidence.expiration ? <TextFormat type="date" value={evidence.expiration} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{evidence.link}</td>
+                  <td>{evidence.created}</td>
+                  <td>{evidence.createdAt ? <TextFormat type="date" value={evidence.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{evidence.edited}</td>
+                  <td>{evidence.editedAt ? <TextFormat type="date" value={evidence.editedAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/evidence/${evidence.id}`} color="info" size="sm" data-cy="entityDetailsButton">

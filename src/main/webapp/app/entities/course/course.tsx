@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Table } from 'reactstrap';
-import { Translate, getSortState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { Translate, TextFormat, getSortState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
@@ -130,6 +130,18 @@ export const Course = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
+                </th>
                 <th>
                   Course <FontAwesomeIcon icon="sort" />
                 </th>
@@ -153,6 +165,10 @@ export const Course = () => {
                   <td>{course.durationAuthorizationInMonth}</td>
                   <td>{course.description}</td>
                   <td>{course.link}</td>
+                  <td>{course.created}</td>
+                  <td>{course.createdAt ? <TextFormat type="date" value={course.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{course.edited}</td>
+                  <td>{course.editedAt ? <TextFormat type="date" value={course.editedAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{course.course ? <Link to={`/course/${course.course.id}`}>{course.course.id}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

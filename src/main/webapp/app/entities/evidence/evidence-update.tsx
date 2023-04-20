@@ -11,6 +11,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { ITraining } from 'app/shared/model/training.model';
 import { getEntities as getTrainings } from 'app/entities/training/training.reducer';
 import { IEvidence } from 'app/shared/model/evidence.model';
+import { StateToDo } from 'app/shared/model/enumerations/state-to-do.model';
+import { Kind } from 'app/shared/model/enumerations/kind.model';
 import { getEntity, updateEntity, createEntity, reset } from './evidence.reducer';
 
 export const EvidenceUpdate = () => {
@@ -26,6 +28,8 @@ export const EvidenceUpdate = () => {
   const loading = useAppSelector(state => state.evidence.loading);
   const updating = useAppSelector(state => state.evidence.updating);
   const updateSuccess = useAppSelector(state => state.evidence.updateSuccess);
+  const stateToDoValues = Object.keys(StateToDo);
+  const kindValues = Object.keys(Kind);
 
   const handleClose = () => {
     navigate('/evidence' + location.search);
@@ -49,6 +53,8 @@ export const EvidenceUpdate = () => {
 
   const saveEntity = values => {
     values.expiration = convertDateTimeToServer(values.expiration);
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
 
     const entity = {
       ...evidenceEntity,
@@ -66,10 +72,16 @@ export const EvidenceUpdate = () => {
     isNew
       ? {
           expiration: displayDefaultDateTime(),
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
         }
       : {
+          state: 'NEW',
+          kind: 'CERTIFICATE',
           ...evidenceEntity,
           expiration: convertDateTimeFromServer(evidenceEntity.expiration),
+          createdAt: convertDateTimeFromServer(evidenceEntity.createdAt),
+          editedAt: convertDateTimeFromServer(evidenceEntity.editedAt),
         };
 
   return (
@@ -96,6 +108,22 @@ export const EvidenceUpdate = () => {
                 data-cy="id2Requirents"
                 type="text"
               />
+              <ValidatedField label="Id 2 Course" id="evidence-id2Course" name="id2Course" data-cy="id2Course" type="text" />
+              <ValidatedField label="Id 2 Employee" id="evidence-id2Employee" name="id2Employee" data-cy="id2Employee" type="text" />
+              <ValidatedField label="State" id="evidence-state" name="state" data-cy="state" type="select">
+                {stateToDoValues.map(stateToDo => (
+                  <option value={stateToDo} key={stateToDo}>
+                    {stateToDo}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedField label="Kind" id="evidence-kind" name="kind" data-cy="kind" type="select">
+                {kindValues.map(kind => (
+                  <option value={kind} key={kind}>
+                    {kind}
+                  </option>
+                ))}
+              </ValidatedField>
               <ValidatedField
                 label="Description"
                 id="evidence-description"
@@ -108,6 +136,16 @@ export const EvidenceUpdate = () => {
                 }}
               />
               <ValidatedField
+                label="Note"
+                id="evidence-note"
+                name="note"
+                data-cy="note"
+                type="text"
+                validate={{
+                  maxLength: { value: 500, message: 'This field cannot be longer than 500 characters.' },
+                }}
+              />
+              <ValidatedField
                 label="Expiration"
                 id="evidence-expiration"
                 name="expiration"
@@ -116,6 +154,24 @@ export const EvidenceUpdate = () => {
                 placeholder="YYYY-MM-DD HH:mm"
               />
               <ValidatedField label="Link" id="evidence-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Created" id="evidence-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="evidence-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="evidence-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="evidence-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/evidence" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

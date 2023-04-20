@@ -20,8 +20,23 @@
             <column name="id_2_requirents" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="id_2_course" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="id_2_employee" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="state" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="kind" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="description" type="varchar(500)">
                 <constraints nullable="false" />
+            </column>
+            <column name="note" type="varchar(500)">
+                <constraints nullable="true" />
             </column>
             <column name="expiration" type="${datetimeType}">
                 <constraints nullable="true" />
@@ -29,9 +44,23 @@
             <column name="link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="created" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="edited_at" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="evidence" columnName="expiration" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="evidence" columnName="created_at" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="evidence" columnName="edited_at" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -53,9 +82,18 @@
             <column name="id" type="numeric"/>
             <column name="id_2_trining" type="numeric"/>
             <column name="id_2_requirents" type="numeric"/>
+            <column name="id_2_course" type="numeric"/>
+            <column name="id_2_employee" type="numeric"/>
+            <column name="state" type="string"/>
+            <column name="kind" type="string"/>
             <column name="description" type="string"/>
+            <column name="note" type="string"/>
             <column name="expiration" type="date"/>
             <column name="link" type="string"/>
+            <column name="created" type="string"/>
+            <column name="created_at" type="date"/>
+            <column name="edited" type="string"/>
+            <column name="edited_at" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

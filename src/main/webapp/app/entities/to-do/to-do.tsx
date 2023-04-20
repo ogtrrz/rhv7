@@ -118,6 +118,18 @@ export const ToDo = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('created')}>
+                  Created <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('createdAt')}>
+                  Created At <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('edited')}>
+                  Edited <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('editedAt')}>
+                  Edited At <FontAwesomeIcon icon="sort" />
+                </th>
                 <th />
               </tr>
             </thead>
@@ -134,6 +146,10 @@ export const ToDo = () => {
                   <td>{toDo.description}</td>
                   <td>{toDo.state}</td>
                   <td>{toDo.link}</td>
+                  <td>{toDo.created}</td>
+                  <td>{toDo.createdAt ? <TextFormat type="date" value={toDo.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{toDo.edited}</td>
+                  <td>{toDo.editedAt ? <TextFormat type="date" value={toDo.editedAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/to-do/${toDo.id}`} color="info" size="sm" data-cy="entityDetailsButton">

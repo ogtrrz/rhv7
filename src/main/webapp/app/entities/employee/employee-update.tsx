@@ -65,6 +65,8 @@ export const EmployeeUpdate = () => {
   const saveEntity = values => {
     values.hireDate = convertDateTimeToServer(values.hireDate);
     values.birthDate = convertDateTimeToServer(values.birthDate);
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
 
     const entity = {
       ...employeeEntity,
@@ -87,11 +89,15 @@ export const EmployeeUpdate = () => {
       ? {
           hireDate: displayDefaultDateTime(),
           birthDate: displayDefaultDateTime(),
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
         }
       : {
           ...employeeEntity,
           hireDate: convertDateTimeFromServer(employeeEntity.hireDate),
           birthDate: convertDateTimeFromServer(employeeEntity.birthDate),
+          createdAt: convertDateTimeFromServer(employeeEntity.createdAt),
+          editedAt: convertDateTimeFromServer(employeeEntity.editedAt),
           trainings: employeeEntity?.trainings?.map(e => e.id.toString()),
           todos: employeeEntity?.todos?.map(e => e.id.toString()),
           historicData: employeeEntity?.historicData?.map(e => e.id.toString()),
@@ -212,6 +218,24 @@ export const EmployeeUpdate = () => {
                 validate={{
                   maxLength: { value: 2000, message: 'This field cannot be longer than 2000 characters.' },
                 }}
+              />
+              <ValidatedField label="Created" id="employee-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="employee-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="employee-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="employee-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
               />
               <ValidatedField label="Training" id="employee-training" data-cy="training" type="select" multiple name="trainings">
                 <option value="" key="0" />

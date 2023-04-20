@@ -48,6 +48,9 @@ export const HistoricDataUpdate = () => {
   }, [updateSuccess]);
 
   const saveEntity = values => {
+    values.createdAt = convertDateTimeToServer(values.createdAt);
+    values.editedAt = convertDateTimeToServer(values.editedAt);
+
     const entity = {
       ...historicDataEntity,
       ...values,
@@ -62,9 +65,14 @@ export const HistoricDataUpdate = () => {
 
   const defaultValues = () =>
     isNew
-      ? {}
+      ? {
+          createdAt: displayDefaultDateTime(),
+          editedAt: displayDefaultDateTime(),
+        }
       : {
           ...historicDataEntity,
+          createdAt: convertDateTimeFromServer(historicDataEntity.createdAt),
+          editedAt: convertDateTimeFromServer(historicDataEntity.editedAt),
         };
 
   return (
@@ -98,6 +106,24 @@ export const HistoricDataUpdate = () => {
                 }}
               />
               <ValidatedField label="Link" id="historic-data-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Created" id="historic-data-created" name="created" data-cy="created" type="text" />
+              <ValidatedField
+                label="Created At"
+                id="historic-data-createdAt"
+                name="createdAt"
+                data-cy="createdAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+              <ValidatedField label="Edited" id="historic-data-edited" name="edited" data-cy="edited" type="text" />
+              <ValidatedField
+                label="Edited At"
+                id="historic-data-editedAt"
+                name="editedAt"
+                data-cy="editedAt"
+                type="datetime-local"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/historic-data" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
