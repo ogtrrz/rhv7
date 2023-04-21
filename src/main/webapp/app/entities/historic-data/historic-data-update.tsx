@@ -106,6 +106,16 @@ export const HistoricDataUpdate = () => {
                 }}
               />
               <ValidatedField label="Link" id="historic-data-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Extra 1" id="historic-data-extra1" name="extra1" data-cy="extra1" type="text" />
+              <ValidatedField label="Extra 2" id="historic-data-extra2" name="extra2" data-cy="extra2" type="text" />
+              <ValidatedField label="Extra 3" id="historic-data-extra3" name="extra3" data-cy="extra3" type="text" />
+              <ValidatedField label="Extra 4" id="historic-data-extra4" name="extra4" data-cy="extra4" type="text" />
+              <ValidatedField label="Extra 5" id="historic-data-extra5" name="extra5" data-cy="extra5" type="text" />
+              <ValidatedField label="Extra 6" id="historic-data-extra6" name="extra6" data-cy="extra6" type="text" />
+              <ValidatedField label="Extra 7" id="historic-data-extra7" name="extra7" data-cy="extra7" type="text" />
+              <ValidatedField label="Extra 8" id="historic-data-extra8" name="extra8" data-cy="extra8" type="text" />
+              <ValidatedField label="Extra 9" id="historic-data-extra9" name="extra9" data-cy="extra9" type="text" />
+              <ValidatedField label="Extra 10" id="historic-data-extra10" name="extra10" data-cy="extra10" type="text" />
               <ValidatedField label="Created" id="historic-data-created" name="created" data-cy="created" type="text" />
               <ValidatedField
                 label="Created At"

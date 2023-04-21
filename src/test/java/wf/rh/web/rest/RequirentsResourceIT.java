@@ -49,6 +49,36 @@ class RequirentsResourceIT {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
+    private static final String DEFAULT_EXTRA_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_3 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_4 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_4 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_5 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_5 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_6 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_6 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_7 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_7 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_8 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_8 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_9 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_9 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_10 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_10 = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED = "AAAAAAAAAA";
     private static final String UPDATED_CREATED = "BBBBBBBBBB";
 
@@ -94,6 +124,16 @@ class RequirentsResourceIT {
             .expirationInMonth(DEFAULT_EXPIRATION_IN_MONTH)
             .kind(DEFAULT_KIND)
             .description(DEFAULT_DESCRIPTION)
+            .extra1(DEFAULT_EXTRA_1)
+            .extra2(DEFAULT_EXTRA_2)
+            .extra3(DEFAULT_EXTRA_3)
+            .extra4(DEFAULT_EXTRA_4)
+            .extra5(DEFAULT_EXTRA_5)
+            .extra6(DEFAULT_EXTRA_6)
+            .extra7(DEFAULT_EXTRA_7)
+            .extra8(DEFAULT_EXTRA_8)
+            .extra9(DEFAULT_EXTRA_9)
+            .extra10(DEFAULT_EXTRA_10)
             .created(DEFAULT_CREATED)
             .createdAt(DEFAULT_CREATED_AT)
             .edited(DEFAULT_EDITED)
@@ -114,6 +154,16 @@ class RequirentsResourceIT {
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -145,6 +195,16 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(DEFAULT_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(DEFAULT_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
+        assertThat(testRequirents.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testRequirents.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testRequirents.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testRequirents.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testRequirents.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testRequirents.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testRequirents.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testRequirents.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testRequirents.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testRequirents.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
         assertThat(testRequirents.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testRequirents.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testRequirents.getEdited()).isEqualTo(DEFAULT_EDITED);
@@ -205,6 +265,16 @@ class RequirentsResourceIT {
             .andExpect(jsonPath("$.[*].expirationInMonth").value(hasItem(DEFAULT_EXPIRATION_IN_MONTH)))
             .andExpect(jsonPath("$.[*].kind").value(hasItem(DEFAULT_KIND.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
+            .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
+            .andExpect(jsonPath("$.[*].extra3").value(hasItem(DEFAULT_EXTRA_3)))
+            .andExpect(jsonPath("$.[*].extra4").value(hasItem(DEFAULT_EXTRA_4)))
+            .andExpect(jsonPath("$.[*].extra5").value(hasItem(DEFAULT_EXTRA_5)))
+            .andExpect(jsonPath("$.[*].extra6").value(hasItem(DEFAULT_EXTRA_6)))
+            .andExpect(jsonPath("$.[*].extra7").value(hasItem(DEFAULT_EXTRA_7)))
+            .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
+            .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
+            .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)))
             .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
@@ -228,6 +298,16 @@ class RequirentsResourceIT {
             .andExpect(jsonPath("$.expirationInMonth").value(DEFAULT_EXPIRATION_IN_MONTH))
             .andExpect(jsonPath("$.kind").value(DEFAULT_KIND.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
+            .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
+            .andExpect(jsonPath("$.extra3").value(DEFAULT_EXTRA_3))
+            .andExpect(jsonPath("$.extra4").value(DEFAULT_EXTRA_4))
+            .andExpect(jsonPath("$.extra5").value(DEFAULT_EXTRA_5))
+            .andExpect(jsonPath("$.extra6").value(DEFAULT_EXTRA_6))
+            .andExpect(jsonPath("$.extra7").value(DEFAULT_EXTRA_7))
+            .andExpect(jsonPath("$.extra8").value(DEFAULT_EXTRA_8))
+            .andExpect(jsonPath("$.extra9").value(DEFAULT_EXTRA_9))
+            .andExpect(jsonPath("$.extra10").value(DEFAULT_EXTRA_10))
             .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
@@ -259,6 +339,16 @@ class RequirentsResourceIT {
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -282,6 +372,16 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRequirents.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testRequirents.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testRequirents.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testRequirents.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testRequirents.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testRequirents.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testRequirents.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testRequirents.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testRequirents.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testRequirents.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testRequirents.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);
@@ -370,8 +470,13 @@ class RequirentsResourceIT {
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
-            .created(UPDATED_CREATED)
-            .edited(UPDATED_EDITED);
+            .extra1(UPDATED_EXTRA_1)
+            .extra3(UPDATED_EXTRA_3)
+            .extra6(UPDATED_EXTRA_6)
+            .extra8(UPDATED_EXTRA_8)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restRequirentsMockMvc
             .perform(
@@ -390,10 +495,20 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testRequirents.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
+        assertThat(testRequirents.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testRequirents.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testRequirents.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testRequirents.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testRequirents.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testRequirents.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testRequirents.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testRequirents.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testRequirents.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testRequirents.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
+        assertThat(testRequirents.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testRequirents.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);
-        assertThat(testRequirents.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
+        assertThat(testRequirents.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
     @Test
@@ -414,6 +529,16 @@ class RequirentsResourceIT {
             .expirationInMonth(UPDATED_EXPIRATION_IN_MONTH)
             .kind(UPDATED_KIND)
             .description(UPDATED_DESCRIPTION)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -436,6 +561,16 @@ class RequirentsResourceIT {
         assertThat(testRequirents.getExpirationInMonth()).isEqualTo(UPDATED_EXPIRATION_IN_MONTH);
         assertThat(testRequirents.getKind()).isEqualTo(UPDATED_KIND);
         assertThat(testRequirents.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
+        assertThat(testRequirents.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testRequirents.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testRequirents.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testRequirents.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testRequirents.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testRequirents.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testRequirents.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testRequirents.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testRequirents.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testRequirents.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testRequirents.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testRequirents.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testRequirents.getEdited()).isEqualTo(UPDATED_EDITED);

@@ -219,6 +219,16 @@ export const EmployeeUpdate = () => {
                   maxLength: { value: 2000, message: 'This field cannot be longer than 2000 characters.' },
                 }}
               />
+              <ValidatedField label="Extra 1" id="employee-extra1" name="extra1" data-cy="extra1" type="text" />
+              <ValidatedField label="Extra 2" id="employee-extra2" name="extra2" data-cy="extra2" type="text" />
+              <ValidatedField label="Extra 3" id="employee-extra3" name="extra3" data-cy="extra3" type="text" />
+              <ValidatedField label="Extra 4" id="employee-extra4" name="extra4" data-cy="extra4" type="text" />
+              <ValidatedField label="Extra 5" id="employee-extra5" name="extra5" data-cy="extra5" type="text" />
+              <ValidatedField label="Extra 6" id="employee-extra6" name="extra6" data-cy="extra6" type="text" />
+              <ValidatedField label="Extra 7" id="employee-extra7" name="extra7" data-cy="extra7" type="text" />
+              <ValidatedField label="Extra 8" id="employee-extra8" name="extra8" data-cy="extra8" type="text" />
+              <ValidatedField label="Extra 9" id="employee-extra9" name="extra9" data-cy="extra9" type="text" />
+              <ValidatedField label="Extra 10" id="employee-extra10" name="extra10" data-cy="extra10" type="text" />
               <ValidatedField label="Created" id="employee-created" name="created" data-cy="created" type="text" />
               <ValidatedField
                 label="Created At"

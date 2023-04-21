@@ -23,6 +23,36 @@
             <column name="link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="extra_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_7" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_8" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_9" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_10" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="created" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -61,6 +91,16 @@
             <column name="id_2_employee" type="numeric"/>
             <column name="name" type="string"/>
             <column name="link" type="string"/>
+            <column name="extra_1" type="string"/>
+            <column name="extra_2" type="string"/>
+            <column name="extra_3" type="string"/>
+            <column name="extra_4" type="string"/>
+            <column name="extra_5" type="string"/>
+            <column name="extra_6" type="string"/>
+            <column name="extra_7" type="string"/>
+            <column name="extra_8" type="string"/>
+            <column name="extra_9" type="string"/>
+            <column name="extra_10" type="string"/>
             <column name="created" type="string"/>
             <column name="created_at" type="date"/>
             <column name="edited" type="string"/>

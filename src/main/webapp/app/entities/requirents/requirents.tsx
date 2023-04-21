@@ -118,6 +118,36 @@ export const Requirents = () => {
                 <th className="hand" onClick={sort('description')}>
                   Description <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('created')}>
                   Created <FontAwesomeIcon icon="sort" />
                 </th>
@@ -146,6 +176,16 @@ export const Requirents = () => {
                   <td>{requirents.expirationInMonth}</td>
                   <td>{requirents.kind}</td>
                   <td>{requirents.description}</td>
+                  <td>{requirents.extra1}</td>
+                  <td>{requirents.extra2}</td>
+                  <td>{requirents.extra3}</td>
+                  <td>{requirents.extra4}</td>
+                  <td>{requirents.extra5}</td>
+                  <td>{requirents.extra6}</td>
+                  <td>{requirents.extra7}</td>
+                  <td>{requirents.extra8}</td>
+                  <td>{requirents.extra9}</td>
+                  <td>{requirents.extra10}</td>
                   <td>{requirents.created}</td>
                   <td>{requirents.createdAt ? <TextFormat type="date" value={requirents.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{requirents.edited}</td>

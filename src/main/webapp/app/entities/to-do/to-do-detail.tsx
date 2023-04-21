@@ -49,6 +49,46 @@ export const ToDoDetail = () => {
           </dt>
           <dd>{toDoEntity.link}</dd>
           <dt>
+            <span id="extra1">Extra 1</span>
+          </dt>
+          <dd>{toDoEntity.extra1}</dd>
+          <dt>
+            <span id="extra2">Extra 2</span>
+          </dt>
+          <dd>{toDoEntity.extra2}</dd>
+          <dt>
+            <span id="extra3">Extra 3</span>
+          </dt>
+          <dd>{toDoEntity.extra3}</dd>
+          <dt>
+            <span id="extra4">Extra 4</span>
+          </dt>
+          <dd>{toDoEntity.extra4}</dd>
+          <dt>
+            <span id="extra5">Extra 5</span>
+          </dt>
+          <dd>{toDoEntity.extra5}</dd>
+          <dt>
+            <span id="extra6">Extra 6</span>
+          </dt>
+          <dd>{toDoEntity.extra6}</dd>
+          <dt>
+            <span id="extra7">Extra 7</span>
+          </dt>
+          <dd>{toDoEntity.extra7}</dd>
+          <dt>
+            <span id="extra8">Extra 8</span>
+          </dt>
+          <dd>{toDoEntity.extra8}</dd>
+          <dt>
+            <span id="extra9">Extra 9</span>
+          </dt>
+          <dd>{toDoEntity.extra9}</dd>
+          <dt>
+            <span id="extra10">Extra 10</span>
+          </dt>
+          <dd>{toDoEntity.extra10}</dd>
+          <dt>
             <span id="created">Created</span>
           </dt>
           <dd>{toDoEntity.created}</dd>

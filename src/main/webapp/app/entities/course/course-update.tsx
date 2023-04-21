@@ -176,6 +176,16 @@ export const CourseUpdate = () => {
                 }}
               />
               <ValidatedField label="Link" id="course-link" name="link" data-cy="link" type="text" />
+              <ValidatedField label="Extra 1" id="course-extra1" name="extra1" data-cy="extra1" type="text" />
+              <ValidatedField label="Extra 2" id="course-extra2" name="extra2" data-cy="extra2" type="text" />
+              <ValidatedField label="Extra 3" id="course-extra3" name="extra3" data-cy="extra3" type="text" />
+              <ValidatedField label="Extra 4" id="course-extra4" name="extra4" data-cy="extra4" type="text" />
+              <ValidatedField label="Extra 5" id="course-extra5" name="extra5" data-cy="extra5" type="text" />
+              <ValidatedField label="Extra 6" id="course-extra6" name="extra6" data-cy="extra6" type="text" />
+              <ValidatedField label="Extra 7" id="course-extra7" name="extra7" data-cy="extra7" type="text" />
+              <ValidatedField label="Extra 8" id="course-extra8" name="extra8" data-cy="extra8" type="text" />
+              <ValidatedField label="Extra 9" id="course-extra9" name="extra9" data-cy="extra9" type="text" />
+              <ValidatedField label="Extra 10" id="course-extra10" name="extra10" data-cy="extra10" type="text" />
               <ValidatedField label="Created" id="course-created" name="created" data-cy="created" type="text" />
               <ValidatedField
                 label="Created At"

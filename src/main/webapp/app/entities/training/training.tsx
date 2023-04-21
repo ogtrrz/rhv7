@@ -118,6 +118,36 @@ export const Training = () => {
                 <th className="hand" onClick={sort('expiry')}>
                   Expiry <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('created')}>
                   Created <FontAwesomeIcon icon="sort" />
                 </th>
@@ -146,6 +176,16 @@ export const Training = () => {
                   <td>{training.code}</td>
                   <td>{training.date ? <TextFormat type="date" value={training.date} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{training.expiry ? <TextFormat type="date" value={training.expiry} format={APP_DATE_FORMAT} /> : null}</td>
+                  <td>{training.extra1}</td>
+                  <td>{training.extra2}</td>
+                  <td>{training.extra3}</td>
+                  <td>{training.extra4}</td>
+                  <td>{training.extra5}</td>
+                  <td>{training.extra6}</td>
+                  <td>{training.extra7}</td>
+                  <td>{training.extra8}</td>
+                  <td>{training.extra9}</td>
+                  <td>{training.extra10}</td>
                   <td>{training.created}</td>
                   <td>{training.createdAt ? <TextFormat type="date" value={training.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{training.edited}</td>

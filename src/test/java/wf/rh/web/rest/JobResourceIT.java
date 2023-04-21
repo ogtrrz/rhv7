@@ -49,6 +49,36 @@ class JobResourceIT {
     private static final Rol DEFAULT_ROL = Rol.OPERATIONAL;
     private static final Rol UPDATED_ROL = Rol.SUPERVISOR;
 
+    private static final String DEFAULT_EXTRA_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_3 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_4 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_4 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_5 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_5 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_6 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_6 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_7 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_7 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_8 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_8 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_9 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_9 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_10 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_10 = "BBBBBBBBBB";
+
     private static final Handling DEFAULT_HANDLING = Handling.RAMP;
     private static final Handling UPDATED_HANDLING = Handling.CHECKIN;
 
@@ -85,7 +115,20 @@ class JobResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Job createEntity(EntityManager em) {
-        Job job = new Job().jobTitle(DEFAULT_JOB_TITLE).rol(DEFAULT_ROL).handling(DEFAULT_HANDLING);
+        Job job = new Job()
+            .jobTitle(DEFAULT_JOB_TITLE)
+            .rol(DEFAULT_ROL)
+            .extra1(DEFAULT_EXTRA_1)
+            .extra2(DEFAULT_EXTRA_2)
+            .extra3(DEFAULT_EXTRA_3)
+            .extra4(DEFAULT_EXTRA_4)
+            .extra5(DEFAULT_EXTRA_5)
+            .extra6(DEFAULT_EXTRA_6)
+            .extra7(DEFAULT_EXTRA_7)
+            .extra8(DEFAULT_EXTRA_8)
+            .extra9(DEFAULT_EXTRA_9)
+            .extra10(DEFAULT_EXTRA_10)
+            .handling(DEFAULT_HANDLING);
         return job;
     }
 
@@ -96,7 +139,20 @@ class JobResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Job createUpdatedEntity(EntityManager em) {
-        Job job = new Job().jobTitle(UPDATED_JOB_TITLE).rol(UPDATED_ROL).handling(UPDATED_HANDLING);
+        Job job = new Job()
+            .jobTitle(UPDATED_JOB_TITLE)
+            .rol(UPDATED_ROL)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
+            .handling(UPDATED_HANDLING);
         return job;
     }
 
@@ -121,6 +177,16 @@ class JobResourceIT {
         Job testJob = jobList.get(jobList.size() - 1);
         assertThat(testJob.getJobTitle()).isEqualTo(DEFAULT_JOB_TITLE);
         assertThat(testJob.getRol()).isEqualTo(DEFAULT_ROL);
+        assertThat(testJob.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testJob.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testJob.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testJob.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testJob.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testJob.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testJob.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testJob.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testJob.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testJob.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
         assertThat(testJob.getHandling()).isEqualTo(DEFAULT_HANDLING);
     }
 
@@ -175,6 +241,16 @@ class JobResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(job.getId().intValue())))
             .andExpect(jsonPath("$.[*].jobTitle").value(hasItem(DEFAULT_JOB_TITLE)))
             .andExpect(jsonPath("$.[*].rol").value(hasItem(DEFAULT_ROL.toString())))
+            .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
+            .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
+            .andExpect(jsonPath("$.[*].extra3").value(hasItem(DEFAULT_EXTRA_3)))
+            .andExpect(jsonPath("$.[*].extra4").value(hasItem(DEFAULT_EXTRA_4)))
+            .andExpect(jsonPath("$.[*].extra5").value(hasItem(DEFAULT_EXTRA_5)))
+            .andExpect(jsonPath("$.[*].extra6").value(hasItem(DEFAULT_EXTRA_6)))
+            .andExpect(jsonPath("$.[*].extra7").value(hasItem(DEFAULT_EXTRA_7)))
+            .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
+            .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
+            .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)))
             .andExpect(jsonPath("$.[*].handling").value(hasItem(DEFAULT_HANDLING.toString())));
     }
 
@@ -209,6 +285,16 @@ class JobResourceIT {
             .andExpect(jsonPath("$.id").value(job.getId().intValue()))
             .andExpect(jsonPath("$.jobTitle").value(DEFAULT_JOB_TITLE))
             .andExpect(jsonPath("$.rol").value(DEFAULT_ROL.toString()))
+            .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
+            .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
+            .andExpect(jsonPath("$.extra3").value(DEFAULT_EXTRA_3))
+            .andExpect(jsonPath("$.extra4").value(DEFAULT_EXTRA_4))
+            .andExpect(jsonPath("$.extra5").value(DEFAULT_EXTRA_5))
+            .andExpect(jsonPath("$.extra6").value(DEFAULT_EXTRA_6))
+            .andExpect(jsonPath("$.extra7").value(DEFAULT_EXTRA_7))
+            .andExpect(jsonPath("$.extra8").value(DEFAULT_EXTRA_8))
+            .andExpect(jsonPath("$.extra9").value(DEFAULT_EXTRA_9))
+            .andExpect(jsonPath("$.extra10").value(DEFAULT_EXTRA_10))
             .andExpect(jsonPath("$.handling").value(DEFAULT_HANDLING.toString()));
     }
 
@@ -231,7 +317,20 @@ class JobResourceIT {
         Job updatedJob = jobRepository.findById(job.getId()).get();
         // Disconnect from session so that the updates on updatedJob are not directly saved in db
         em.detach(updatedJob);
-        updatedJob.jobTitle(UPDATED_JOB_TITLE).rol(UPDATED_ROL).handling(UPDATED_HANDLING);
+        updatedJob
+            .jobTitle(UPDATED_JOB_TITLE)
+            .rol(UPDATED_ROL)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
+            .handling(UPDATED_HANDLING);
         JobDTO jobDTO = jobMapper.toDto(updatedJob);
 
         restJobMockMvc
@@ -248,6 +347,16 @@ class JobResourceIT {
         Job testJob = jobList.get(jobList.size() - 1);
         assertThat(testJob.getJobTitle()).isEqualTo(UPDATED_JOB_TITLE);
         assertThat(testJob.getRol()).isEqualTo(UPDATED_ROL);
+        assertThat(testJob.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testJob.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testJob.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testJob.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testJob.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testJob.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testJob.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testJob.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testJob.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testJob.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testJob.getHandling()).isEqualTo(UPDATED_HANDLING);
     }
 
@@ -328,7 +437,13 @@ class JobResourceIT {
         Job partialUpdatedJob = new Job();
         partialUpdatedJob.setId(job.getId());
 
-        partialUpdatedJob.rol(UPDATED_ROL);
+        partialUpdatedJob
+            .rol(UPDATED_ROL)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra9(UPDATED_EXTRA_9)
+            .handling(UPDATED_HANDLING);
 
         restJobMockMvc
             .perform(
@@ -344,7 +459,17 @@ class JobResourceIT {
         Job testJob = jobList.get(jobList.size() - 1);
         assertThat(testJob.getJobTitle()).isEqualTo(DEFAULT_JOB_TITLE);
         assertThat(testJob.getRol()).isEqualTo(UPDATED_ROL);
-        assertThat(testJob.getHandling()).isEqualTo(DEFAULT_HANDLING);
+        assertThat(testJob.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testJob.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testJob.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testJob.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testJob.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testJob.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testJob.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testJob.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testJob.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testJob.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
+        assertThat(testJob.getHandling()).isEqualTo(UPDATED_HANDLING);
     }
 
     @Test
@@ -359,7 +484,20 @@ class JobResourceIT {
         Job partialUpdatedJob = new Job();
         partialUpdatedJob.setId(job.getId());
 
-        partialUpdatedJob.jobTitle(UPDATED_JOB_TITLE).rol(UPDATED_ROL).handling(UPDATED_HANDLING);
+        partialUpdatedJob
+            .jobTitle(UPDATED_JOB_TITLE)
+            .rol(UPDATED_ROL)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
+            .handling(UPDATED_HANDLING);
 
         restJobMockMvc
             .perform(
@@ -375,6 +513,16 @@ class JobResourceIT {
         Job testJob = jobList.get(jobList.size() - 1);
         assertThat(testJob.getJobTitle()).isEqualTo(UPDATED_JOB_TITLE);
         assertThat(testJob.getRol()).isEqualTo(UPDATED_ROL);
+        assertThat(testJob.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testJob.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testJob.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testJob.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testJob.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testJob.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testJob.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testJob.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testJob.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testJob.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testJob.getHandling()).isEqualTo(UPDATED_HANDLING);
     }
 

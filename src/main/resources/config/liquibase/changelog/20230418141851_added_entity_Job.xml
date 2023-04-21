@@ -20,6 +20,36 @@
             <column name="rol" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="extra_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_7" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_8" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_9" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_10" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="handling" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -71,6 +101,16 @@
             <column name="id" type="numeric"/>
             <column name="job_title" type="string"/>
             <column name="rol" type="string"/>
+            <column name="extra_1" type="string"/>
+            <column name="extra_2" type="string"/>
+            <column name="extra_3" type="string"/>
+            <column name="extra_4" type="string"/>
+            <column name="extra_5" type="string"/>
+            <column name="extra_6" type="string"/>
+            <column name="extra_7" type="string"/>
+            <column name="extra_8" type="string"/>
+            <column name="extra_9" type="string"/>
+            <column name="extra_10" type="string"/>
             <column name="handling" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
