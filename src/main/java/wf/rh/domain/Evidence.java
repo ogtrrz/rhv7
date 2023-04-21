@@ -61,6 +61,36 @@ public class Evidence implements Serializable {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "extra_1")
+    private String extra1;
+
+    @Column(name = "extra_2")
+    private String extra2;
+
+    @Column(name = "extra_3")
+    private String extra3;
+
+    @Column(name = "extra_4")
+    private String extra4;
+
+    @Column(name = "extra_5")
+    private String extra5;
+
+    @Column(name = "extra_6")
+    private String extra6;
+
+    @Column(name = "extra_7")
+    private String extra7;
+
+    @Column(name = "extra_8")
+    private String extra8;
+
+    @Column(name = "extra_9")
+    private String extra9;
+
+    @Column(name = "extra_10")
+    private String extra10;
+
     @Column(name = "created")
     private String created;
 
@@ -222,6 +252,136 @@ public class Evidence implements Serializable {
         this.link = link;
     }
 
+    public String getExtra1() {
+        return this.extra1;
+    }
+
+    public Evidence extra1(String extra1) {
+        this.setExtra1(extra1);
+        return this;
+    }
+
+    public void setExtra1(String extra1) {
+        this.extra1 = extra1;
+    }
+
+    public String getExtra2() {
+        return this.extra2;
+    }
+
+    public Evidence extra2(String extra2) {
+        this.setExtra2(extra2);
+        return this;
+    }
+
+    public void setExtra2(String extra2) {
+        this.extra2 = extra2;
+    }
+
+    public String getExtra3() {
+        return this.extra3;
+    }
+
+    public Evidence extra3(String extra3) {
+        this.setExtra3(extra3);
+        return this;
+    }
+
+    public void setExtra3(String extra3) {
+        this.extra3 = extra3;
+    }
+
+    public String getExtra4() {
+        return this.extra4;
+    }
+
+    public Evidence extra4(String extra4) {
+        this.setExtra4(extra4);
+        return this;
+    }
+
+    public void setExtra4(String extra4) {
+        this.extra4 = extra4;
+    }
+
+    public String getExtra5() {
+        return this.extra5;
+    }
+
+    public Evidence extra5(String extra5) {
+        this.setExtra5(extra5);
+        return this;
+    }
+
+    public void setExtra5(String extra5) {
+        this.extra5 = extra5;
+    }
+
+    public String getExtra6() {
+        return this.extra6;
+    }
+
+    public Evidence extra6(String extra6) {
+        this.setExtra6(extra6);
+        return this;
+    }
+
+    public void setExtra6(String extra6) {
+        this.extra6 = extra6;
+    }
+
+    public String getExtra7() {
+        return this.extra7;
+    }
+
+    public Evidence extra7(String extra7) {
+        this.setExtra7(extra7);
+        return this;
+    }
+
+    public void setExtra7(String extra7) {
+        this.extra7 = extra7;
+    }
+
+    public String getExtra8() {
+        return this.extra8;
+    }
+
+    public Evidence extra8(String extra8) {
+        this.setExtra8(extra8);
+        return this;
+    }
+
+    public void setExtra8(String extra8) {
+        this.extra8 = extra8;
+    }
+
+    public String getExtra9() {
+        return this.extra9;
+    }
+
+    public Evidence extra9(String extra9) {
+        this.setExtra9(extra9);
+        return this;
+    }
+
+    public void setExtra9(String extra9) {
+        this.extra9 = extra9;
+    }
+
+    public String getExtra10() {
+        return this.extra10;
+    }
+
+    public Evidence extra10(String extra10) {
+        this.setExtra10(extra10);
+        return this;
+    }
+
+    public void setExtra10(String extra10) {
+        this.extra10 = extra10;
+    }
+
     public String getCreated() {
         return this.created;
     }
@@ -339,6 +499,16 @@ public class Evidence implements Serializable {
             ", note='" + getNote() + "'" +
             ", expiration='" + getExpiration() + "'" +
             ", link='" + getLink() + "'" +
+            ", extra1='" + getExtra1() + "'" +
+            ", extra2='" + getExtra2() + "'" +
+            ", extra3='" + getExtra3() + "'" +
+            ", extra4='" + getExtra4() + "'" +
+            ", extra5='" + getExtra5() + "'" +
+            ", extra6='" + getExtra6() + "'" +
+            ", extra7='" + getExtra7() + "'" +
+            ", extra8='" + getExtra8() + "'" +
+            ", extra9='" + getExtra9() + "'" +
+            ", extra10='" + getExtra10() + "'" +
             ", created='" + getCreated() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             ", edited='" + getEdited() + "'" +

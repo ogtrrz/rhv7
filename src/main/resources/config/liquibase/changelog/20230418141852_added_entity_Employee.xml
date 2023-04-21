@@ -53,6 +53,36 @@
             <column name="note" type="varchar(2000)">
                 <constraints nullable="true" />
             </column>
+            <column name="extra_1" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_2" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_3" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_4" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_5" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_6" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_7" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_8" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_9" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="extra_10" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="created" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -142,6 +172,16 @@
             <column name="allergies" type="string"/>
             <column name="birth_date" type="date"/>
             <column name="note" type="string"/>
+            <column name="extra_1" type="string"/>
+            <column name="extra_2" type="string"/>
+            <column name="extra_3" type="string"/>
+            <column name="extra_4" type="string"/>
+            <column name="extra_5" type="string"/>
+            <column name="extra_6" type="string"/>
+            <column name="extra_7" type="string"/>
+            <column name="extra_8" type="string"/>
+            <column name="extra_9" type="string"/>
+            <column name="extra_10" type="string"/>
             <column name="created" type="string"/>
             <column name="created_at" type="date"/>
             <column name="edited" type="string"/>

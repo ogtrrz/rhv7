@@ -109,6 +109,36 @@ export const Job = () => {
                 <th className="hand" onClick={sort('rol')}>
                   Rol <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('handling')}>
                   Handling <FontAwesomeIcon icon="sort" />
                 </th>
@@ -125,6 +155,16 @@ export const Job = () => {
                   </td>
                   <td>{job.jobTitle}</td>
                   <td>{job.rol}</td>
+                  <td>{job.extra1}</td>
+                  <td>{job.extra2}</td>
+                  <td>{job.extra3}</td>
+                  <td>{job.extra4}</td>
+                  <td>{job.extra5}</td>
+                  <td>{job.extra6}</td>
+                  <td>{job.extra7}</td>
+                  <td>{job.extra8}</td>
+                  <td>{job.extra9}</td>
+                  <td>{job.extra10}</td>
                   <td>{job.handling}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">

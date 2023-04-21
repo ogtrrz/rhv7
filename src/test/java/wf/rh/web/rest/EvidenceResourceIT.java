@@ -65,6 +65,36 @@ class EvidenceResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_EXTRA_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_3 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_4 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_4 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_5 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_5 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_6 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_6 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_7 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_7 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_8 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_8 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_9 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_9 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_10 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_10 = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED = "AAAAAAAAAA";
     private static final String UPDATED_CREATED = "BBBBBBBBBB";
 
@@ -115,6 +145,16 @@ class EvidenceResourceIT {
             .note(DEFAULT_NOTE)
             .expiration(DEFAULT_EXPIRATION)
             .link(DEFAULT_LINK)
+            .extra1(DEFAULT_EXTRA_1)
+            .extra2(DEFAULT_EXTRA_2)
+            .extra3(DEFAULT_EXTRA_3)
+            .extra4(DEFAULT_EXTRA_4)
+            .extra5(DEFAULT_EXTRA_5)
+            .extra6(DEFAULT_EXTRA_6)
+            .extra7(DEFAULT_EXTRA_7)
+            .extra8(DEFAULT_EXTRA_8)
+            .extra9(DEFAULT_EXTRA_9)
+            .extra10(DEFAULT_EXTRA_10)
             .created(DEFAULT_CREATED)
             .createdAt(DEFAULT_CREATED_AT)
             .edited(DEFAULT_EDITED)
@@ -140,6 +180,16 @@ class EvidenceResourceIT {
             .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -176,6 +226,16 @@ class EvidenceResourceIT {
         assertThat(testEvidence.getNote()).isEqualTo(DEFAULT_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(DEFAULT_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testEvidence.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testEvidence.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testEvidence.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testEvidence.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testEvidence.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testEvidence.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testEvidence.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testEvidence.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testEvidence.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testEvidence.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
         assertThat(testEvidence.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testEvidence.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testEvidence.getEdited()).isEqualTo(DEFAULT_EDITED);
@@ -241,6 +301,16 @@ class EvidenceResourceIT {
             .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
             .andExpect(jsonPath("$.[*].expiration").value(hasItem(DEFAULT_EXPIRATION.toString())))
             .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
+            .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
+            .andExpect(jsonPath("$.[*].extra3").value(hasItem(DEFAULT_EXTRA_3)))
+            .andExpect(jsonPath("$.[*].extra4").value(hasItem(DEFAULT_EXTRA_4)))
+            .andExpect(jsonPath("$.[*].extra5").value(hasItem(DEFAULT_EXTRA_5)))
+            .andExpect(jsonPath("$.[*].extra6").value(hasItem(DEFAULT_EXTRA_6)))
+            .andExpect(jsonPath("$.[*].extra7").value(hasItem(DEFAULT_EXTRA_7)))
+            .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
+            .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
+            .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)))
             .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
@@ -269,6 +339,16 @@ class EvidenceResourceIT {
             .andExpect(jsonPath("$.note").value(DEFAULT_NOTE))
             .andExpect(jsonPath("$.expiration").value(DEFAULT_EXPIRATION.toString()))
             .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
+            .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
+            .andExpect(jsonPath("$.extra3").value(DEFAULT_EXTRA_3))
+            .andExpect(jsonPath("$.extra4").value(DEFAULT_EXTRA_4))
+            .andExpect(jsonPath("$.extra5").value(DEFAULT_EXTRA_5))
+            .andExpect(jsonPath("$.extra6").value(DEFAULT_EXTRA_6))
+            .andExpect(jsonPath("$.extra7").value(DEFAULT_EXTRA_7))
+            .andExpect(jsonPath("$.extra8").value(DEFAULT_EXTRA_8))
+            .andExpect(jsonPath("$.extra9").value(DEFAULT_EXTRA_9))
+            .andExpect(jsonPath("$.extra10").value(DEFAULT_EXTRA_10))
             .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
@@ -305,6 +385,16 @@ class EvidenceResourceIT {
             .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -333,6 +423,16 @@ class EvidenceResourceIT {
         assertThat(testEvidence.getNote()).isEqualTo(UPDATED_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(UPDATED_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testEvidence.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testEvidence.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testEvidence.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testEvidence.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testEvidence.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testEvidence.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testEvidence.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testEvidence.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testEvidence.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testEvidence.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);
@@ -420,10 +520,14 @@ class EvidenceResourceIT {
             .id2Requirents(UPDATED_ID_2_REQUIRENTS)
             .id2Course(UPDATED_ID_2_COURSE)
             .kind(UPDATED_KIND)
-            .created(UPDATED_CREATED)
-            .createdAt(UPDATED_CREATED_AT)
-            .edited(UPDATED_EDITED)
-            .editedAt(UPDATED_EDITED_AT);
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .createdAt(UPDATED_CREATED_AT);
 
         restEvidenceMockMvc
             .perform(
@@ -447,10 +551,20 @@ class EvidenceResourceIT {
         assertThat(testEvidence.getNote()).isEqualTo(DEFAULT_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(DEFAULT_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(DEFAULT_LINK);
-        assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testEvidence.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testEvidence.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testEvidence.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testEvidence.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testEvidence.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testEvidence.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testEvidence.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testEvidence.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testEvidence.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testEvidence.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
+        assertThat(testEvidence.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
-        assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);
-        assertThat(testEvidence.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
+        assertThat(testEvidence.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testEvidence.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
 
     @Test
@@ -476,6 +590,16 @@ class EvidenceResourceIT {
             .note(UPDATED_NOTE)
             .expiration(UPDATED_EXPIRATION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -503,6 +627,16 @@ class EvidenceResourceIT {
         assertThat(testEvidence.getNote()).isEqualTo(UPDATED_NOTE);
         assertThat(testEvidence.getExpiration()).isEqualTo(UPDATED_EXPIRATION);
         assertThat(testEvidence.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testEvidence.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testEvidence.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testEvidence.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testEvidence.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testEvidence.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testEvidence.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testEvidence.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testEvidence.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testEvidence.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testEvidence.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testEvidence.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testEvidence.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testEvidence.getEdited()).isEqualTo(UPDATED_EDITED);

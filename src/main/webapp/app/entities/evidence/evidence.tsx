@@ -133,6 +133,36 @@ export const Evidence = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('created')}>
                   Created <FontAwesomeIcon icon="sort" />
                 </th>
@@ -166,6 +196,16 @@ export const Evidence = () => {
                   <td>{evidence.note}</td>
                   <td>{evidence.expiration ? <TextFormat type="date" value={evidence.expiration} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{evidence.link}</td>
+                  <td>{evidence.extra1}</td>
+                  <td>{evidence.extra2}</td>
+                  <td>{evidence.extra3}</td>
+                  <td>{evidence.extra4}</td>
+                  <td>{evidence.extra5}</td>
+                  <td>{evidence.extra6}</td>
+                  <td>{evidence.extra7}</td>
+                  <td>{evidence.extra8}</td>
+                  <td>{evidence.extra9}</td>
+                  <td>{evidence.extra10}</td>
                   <td>{evidence.created}</td>
                   <td>{evidence.createdAt ? <TextFormat type="date" value={evidence.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{evidence.edited}</td>

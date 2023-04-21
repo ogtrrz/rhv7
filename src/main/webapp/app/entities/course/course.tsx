@@ -130,6 +130,36 @@ export const Course = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('created')}>
                   Created <FontAwesomeIcon icon="sort" />
                 </th>
@@ -165,6 +195,16 @@ export const Course = () => {
                   <td>{course.durationAuthorizationInMonth}</td>
                   <td>{course.description}</td>
                   <td>{course.link}</td>
+                  <td>{course.extra1}</td>
+                  <td>{course.extra2}</td>
+                  <td>{course.extra3}</td>
+                  <td>{course.extra4}</td>
+                  <td>{course.extra5}</td>
+                  <td>{course.extra6}</td>
+                  <td>{course.extra7}</td>
+                  <td>{course.extra8}</td>
+                  <td>{course.extra9}</td>
+                  <td>{course.extra10}</td>
                   <td>{course.created}</td>
                   <td>{course.createdAt ? <TextFormat type="date" value={course.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{course.edited}</td>

@@ -118,6 +118,36 @@ export const ToDo = () => {
                 <th className="hand" onClick={sort('link')}>
                   Link <FontAwesomeIcon icon="sort" />
                 </th>
+                <th className="hand" onClick={sort('extra1')}>
+                  Extra 1 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra2')}>
+                  Extra 2 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra3')}>
+                  Extra 3 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra4')}>
+                  Extra 4 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra5')}>
+                  Extra 5 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra6')}>
+                  Extra 6 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra7')}>
+                  Extra 7 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra8')}>
+                  Extra 8 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra9')}>
+                  Extra 9 <FontAwesomeIcon icon="sort" />
+                </th>
+                <th className="hand" onClick={sort('extra10')}>
+                  Extra 10 <FontAwesomeIcon icon="sort" />
+                </th>
                 <th className="hand" onClick={sort('created')}>
                   Created <FontAwesomeIcon icon="sort" />
                 </th>
@@ -146,6 +176,16 @@ export const ToDo = () => {
                   <td>{toDo.description}</td>
                   <td>{toDo.state}</td>
                   <td>{toDo.link}</td>
+                  <td>{toDo.extra1}</td>
+                  <td>{toDo.extra2}</td>
+                  <td>{toDo.extra3}</td>
+                  <td>{toDo.extra4}</td>
+                  <td>{toDo.extra5}</td>
+                  <td>{toDo.extra6}</td>
+                  <td>{toDo.extra7}</td>
+                  <td>{toDo.extra8}</td>
+                  <td>{toDo.extra9}</td>
+                  <td>{toDo.extra10}</td>
                   <td>{toDo.created}</td>
                   <td>{toDo.createdAt ? <TextFormat type="date" value={toDo.createdAt} format={APP_DATE_FORMAT} /> : null}</td>
                   <td>{toDo.edited}</td>

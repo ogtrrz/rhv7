@@ -49,6 +49,36 @@ class ToDoResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_EXTRA_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_3 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_4 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_4 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_5 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_5 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_6 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_6 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_7 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_7 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_8 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_8 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_9 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_9 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_10 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_10 = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED = "AAAAAAAAAA";
     private static final String UPDATED_CREATED = "BBBBBBBBBB";
 
@@ -94,6 +124,16 @@ class ToDoResourceIT {
             .description(DEFAULT_DESCRIPTION)
             .state(DEFAULT_STATE)
             .link(DEFAULT_LINK)
+            .extra1(DEFAULT_EXTRA_1)
+            .extra2(DEFAULT_EXTRA_2)
+            .extra3(DEFAULT_EXTRA_3)
+            .extra4(DEFAULT_EXTRA_4)
+            .extra5(DEFAULT_EXTRA_5)
+            .extra6(DEFAULT_EXTRA_6)
+            .extra7(DEFAULT_EXTRA_7)
+            .extra8(DEFAULT_EXTRA_8)
+            .extra9(DEFAULT_EXTRA_9)
+            .extra10(DEFAULT_EXTRA_10)
             .created(DEFAULT_CREATED)
             .createdAt(DEFAULT_CREATED_AT)
             .edited(DEFAULT_EDITED)
@@ -114,6 +154,16 @@ class ToDoResourceIT {
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -145,6 +195,16 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testToDo.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testToDo.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testToDo.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testToDo.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testToDo.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testToDo.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testToDo.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testToDo.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testToDo.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testToDo.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testToDo.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
         assertThat(testToDo.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testToDo.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testToDo.getEdited()).isEqualTo(DEFAULT_EDITED);
@@ -205,6 +265,16 @@ class ToDoResourceIT {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
+            .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
+            .andExpect(jsonPath("$.[*].extra3").value(hasItem(DEFAULT_EXTRA_3)))
+            .andExpect(jsonPath("$.[*].extra4").value(hasItem(DEFAULT_EXTRA_4)))
+            .andExpect(jsonPath("$.[*].extra5").value(hasItem(DEFAULT_EXTRA_5)))
+            .andExpect(jsonPath("$.[*].extra6").value(hasItem(DEFAULT_EXTRA_6)))
+            .andExpect(jsonPath("$.[*].extra7").value(hasItem(DEFAULT_EXTRA_7)))
+            .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
+            .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
+            .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)))
             .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
@@ -228,6 +298,16 @@ class ToDoResourceIT {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
+            .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
+            .andExpect(jsonPath("$.extra3").value(DEFAULT_EXTRA_3))
+            .andExpect(jsonPath("$.extra4").value(DEFAULT_EXTRA_4))
+            .andExpect(jsonPath("$.extra5").value(DEFAULT_EXTRA_5))
+            .andExpect(jsonPath("$.extra6").value(DEFAULT_EXTRA_6))
+            .andExpect(jsonPath("$.extra7").value(DEFAULT_EXTRA_7))
+            .andExpect(jsonPath("$.extra8").value(DEFAULT_EXTRA_8))
+            .andExpect(jsonPath("$.extra9").value(DEFAULT_EXTRA_9))
+            .andExpect(jsonPath("$.extra10").value(DEFAULT_EXTRA_10))
             .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
@@ -259,6 +339,16 @@ class ToDoResourceIT {
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -282,6 +372,16 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testToDo.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testToDo.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testToDo.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testToDo.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testToDo.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testToDo.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testToDo.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testToDo.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testToDo.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testToDo.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testToDo.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testToDo.getEdited()).isEqualTo(UPDATED_EDITED);
@@ -365,7 +465,19 @@ class ToDoResourceIT {
         ToDo partialUpdatedToDo = new ToDo();
         partialUpdatedToDo.setId(toDo.getId());
 
-        partialUpdatedToDo.description(UPDATED_DESCRIPTION).state(UPDATED_STATE).created(UPDATED_CREATED).editedAt(UPDATED_EDITED_AT);
+        partialUpdatedToDo
+            .description(UPDATED_DESCRIPTION)
+            .state(UPDATED_STATE)
+            .extra1(UPDATED_EXTRA_1)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra10(UPDATED_EXTRA_10)
+            .createdAt(UPDATED_CREATED_AT)
+            .edited(UPDATED_EDITED)
+            .editedAt(UPDATED_EDITED_AT);
 
         restToDoMockMvc
             .perform(
@@ -384,9 +496,19 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(DEFAULT_LINK);
-        assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
-        assertThat(testToDo.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
-        assertThat(testToDo.getEdited()).isEqualTo(DEFAULT_EDITED);
+        assertThat(testToDo.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testToDo.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testToDo.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testToDo.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testToDo.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testToDo.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testToDo.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testToDo.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testToDo.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testToDo.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
+        assertThat(testToDo.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testToDo.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testToDo.getEdited()).isEqualTo(UPDATED_EDITED);
         assertThat(testToDo.getEditedAt()).isEqualTo(UPDATED_EDITED_AT);
     }
 
@@ -408,6 +530,16 @@ class ToDoResourceIT {
             .description(UPDATED_DESCRIPTION)
             .state(UPDATED_STATE)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -430,6 +562,16 @@ class ToDoResourceIT {
         assertThat(testToDo.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testToDo.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testToDo.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testToDo.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testToDo.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testToDo.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testToDo.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testToDo.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testToDo.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testToDo.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testToDo.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testToDo.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testToDo.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testToDo.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testToDo.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testToDo.getEdited()).isEqualTo(UPDATED_EDITED);

@@ -71,6 +71,36 @@ class CourseResourceIT {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final String DEFAULT_EXTRA_1 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_1 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_2 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_2 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_3 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_3 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_4 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_4 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_5 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_5 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_6 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_6 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_7 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_7 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_8 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_8 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_9 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_9 = "BBBBBBBBBB";
+
+    private static final String DEFAULT_EXTRA_10 = "AAAAAAAAAA";
+    private static final String UPDATED_EXTRA_10 = "BBBBBBBBBB";
+
     private static final String DEFAULT_CREATED = "AAAAAAAAAA";
     private static final String UPDATED_CREATED = "BBBBBBBBBB";
 
@@ -126,6 +156,16 @@ class CourseResourceIT {
             .durationAuthorizationInMonth(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH)
             .description(DEFAULT_DESCRIPTION)
             .link(DEFAULT_LINK)
+            .extra1(DEFAULT_EXTRA_1)
+            .extra2(DEFAULT_EXTRA_2)
+            .extra3(DEFAULT_EXTRA_3)
+            .extra4(DEFAULT_EXTRA_4)
+            .extra5(DEFAULT_EXTRA_5)
+            .extra6(DEFAULT_EXTRA_6)
+            .extra7(DEFAULT_EXTRA_7)
+            .extra8(DEFAULT_EXTRA_8)
+            .extra9(DEFAULT_EXTRA_9)
+            .extra10(DEFAULT_EXTRA_10)
             .created(DEFAULT_CREATED)
             .createdAt(DEFAULT_CREATED_AT)
             .edited(DEFAULT_EDITED)
@@ -150,6 +190,16 @@ class CourseResourceIT {
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -185,6 +235,16 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testCourse.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testCourse.getExtra2()).isEqualTo(DEFAULT_EXTRA_2);
+        assertThat(testCourse.getExtra3()).isEqualTo(DEFAULT_EXTRA_3);
+        assertThat(testCourse.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testCourse.getExtra5()).isEqualTo(DEFAULT_EXTRA_5);
+        assertThat(testCourse.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testCourse.getExtra7()).isEqualTo(DEFAULT_EXTRA_7);
+        assertThat(testCourse.getExtra8()).isEqualTo(DEFAULT_EXTRA_8);
+        assertThat(testCourse.getExtra9()).isEqualTo(DEFAULT_EXTRA_9);
+        assertThat(testCourse.getExtra10()).isEqualTo(DEFAULT_EXTRA_10);
         assertThat(testCourse.getCreated()).isEqualTo(DEFAULT_CREATED);
         assertThat(testCourse.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testCourse.getEdited()).isEqualTo(DEFAULT_EDITED);
@@ -267,6 +327,16 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.[*].durationAuthorizationInMonth").value(hasItem(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
             .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
+            .andExpect(jsonPath("$.[*].extra1").value(hasItem(DEFAULT_EXTRA_1)))
+            .andExpect(jsonPath("$.[*].extra2").value(hasItem(DEFAULT_EXTRA_2)))
+            .andExpect(jsonPath("$.[*].extra3").value(hasItem(DEFAULT_EXTRA_3)))
+            .andExpect(jsonPath("$.[*].extra4").value(hasItem(DEFAULT_EXTRA_4)))
+            .andExpect(jsonPath("$.[*].extra5").value(hasItem(DEFAULT_EXTRA_5)))
+            .andExpect(jsonPath("$.[*].extra6").value(hasItem(DEFAULT_EXTRA_6)))
+            .andExpect(jsonPath("$.[*].extra7").value(hasItem(DEFAULT_EXTRA_7)))
+            .andExpect(jsonPath("$.[*].extra8").value(hasItem(DEFAULT_EXTRA_8)))
+            .andExpect(jsonPath("$.[*].extra9").value(hasItem(DEFAULT_EXTRA_9)))
+            .andExpect(jsonPath("$.[*].extra10").value(hasItem(DEFAULT_EXTRA_10)))
             .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED)))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].edited").value(hasItem(DEFAULT_EDITED)))
@@ -311,6 +381,16 @@ class CourseResourceIT {
             .andExpect(jsonPath("$.durationAuthorizationInMonth").value(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
             .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
+            .andExpect(jsonPath("$.extra1").value(DEFAULT_EXTRA_1))
+            .andExpect(jsonPath("$.extra2").value(DEFAULT_EXTRA_2))
+            .andExpect(jsonPath("$.extra3").value(DEFAULT_EXTRA_3))
+            .andExpect(jsonPath("$.extra4").value(DEFAULT_EXTRA_4))
+            .andExpect(jsonPath("$.extra5").value(DEFAULT_EXTRA_5))
+            .andExpect(jsonPath("$.extra6").value(DEFAULT_EXTRA_6))
+            .andExpect(jsonPath("$.extra7").value(DEFAULT_EXTRA_7))
+            .andExpect(jsonPath("$.extra8").value(DEFAULT_EXTRA_8))
+            .andExpect(jsonPath("$.extra9").value(DEFAULT_EXTRA_9))
+            .andExpect(jsonPath("$.extra10").value(DEFAULT_EXTRA_10))
             .andExpect(jsonPath("$.created").value(DEFAULT_CREATED))
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.edited").value(DEFAULT_EDITED))
@@ -346,6 +426,16 @@ class CourseResourceIT {
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -373,6 +463,16 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(UPDATED_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testCourse.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testCourse.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testCourse.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testCourse.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testCourse.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testCourse.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testCourse.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testCourse.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testCourse.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testCourse.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testCourse.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
@@ -461,7 +561,14 @@ class CourseResourceIT {
             .typeCourse(UPDATED_TYPE_COURSE)
             .autorizationBy(UPDATED_AUTORIZATION_BY)
             .description(UPDATED_DESCRIPTION)
-            .createdAt(UPDATED_CREATED_AT)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra5(UPDATED_EXTRA_5)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
+            .created(UPDATED_CREATED)
             .edited(UPDATED_EDITED);
 
         restCourseMockMvc
@@ -485,8 +592,18 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(DEFAULT_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(DEFAULT_LINK);
-        assertThat(testCourse.getCreated()).isEqualTo(DEFAULT_CREATED);
-        assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+        assertThat(testCourse.getExtra1()).isEqualTo(DEFAULT_EXTRA_1);
+        assertThat(testCourse.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testCourse.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testCourse.getExtra4()).isEqualTo(DEFAULT_EXTRA_4);
+        assertThat(testCourse.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testCourse.getExtra6()).isEqualTo(DEFAULT_EXTRA_6);
+        assertThat(testCourse.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testCourse.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testCourse.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testCourse.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
+        assertThat(testCourse.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testCourse.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
         assertThat(testCourse.getEditedAt()).isEqualTo(DEFAULT_EDITED_AT);
     }
@@ -513,6 +630,16 @@ class CourseResourceIT {
             .durationAuthorizationInMonth(UPDATED_DURATION_AUTHORIZATION_IN_MONTH)
             .description(UPDATED_DESCRIPTION)
             .link(UPDATED_LINK)
+            .extra1(UPDATED_EXTRA_1)
+            .extra2(UPDATED_EXTRA_2)
+            .extra3(UPDATED_EXTRA_3)
+            .extra4(UPDATED_EXTRA_4)
+            .extra5(UPDATED_EXTRA_5)
+            .extra6(UPDATED_EXTRA_6)
+            .extra7(UPDATED_EXTRA_7)
+            .extra8(UPDATED_EXTRA_8)
+            .extra9(UPDATED_EXTRA_9)
+            .extra10(UPDATED_EXTRA_10)
             .created(UPDATED_CREATED)
             .createdAt(UPDATED_CREATED_AT)
             .edited(UPDATED_EDITED)
@@ -539,6 +666,16 @@ class CourseResourceIT {
         assertThat(testCourse.getDurationAuthorizationInMonth()).isEqualTo(UPDATED_DURATION_AUTHORIZATION_IN_MONTH);
         assertThat(testCourse.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCourse.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testCourse.getExtra1()).isEqualTo(UPDATED_EXTRA_1);
+        assertThat(testCourse.getExtra2()).isEqualTo(UPDATED_EXTRA_2);
+        assertThat(testCourse.getExtra3()).isEqualTo(UPDATED_EXTRA_3);
+        assertThat(testCourse.getExtra4()).isEqualTo(UPDATED_EXTRA_4);
+        assertThat(testCourse.getExtra5()).isEqualTo(UPDATED_EXTRA_5);
+        assertThat(testCourse.getExtra6()).isEqualTo(UPDATED_EXTRA_6);
+        assertThat(testCourse.getExtra7()).isEqualTo(UPDATED_EXTRA_7);
+        assertThat(testCourse.getExtra8()).isEqualTo(UPDATED_EXTRA_8);
+        assertThat(testCourse.getExtra9()).isEqualTo(UPDATED_EXTRA_9);
+        assertThat(testCourse.getExtra10()).isEqualTo(UPDATED_EXTRA_10);
         assertThat(testCourse.getCreated()).isEqualTo(UPDATED_CREATED);
         assertThat(testCourse.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testCourse.getEdited()).isEqualTo(UPDATED_EDITED);
