@@ -20,7 +20,7 @@ public interface TrainingMapper extends EntityMapper<TrainingDTO, Training> {
     Training toEntity(TrainingDTO trainingDTO);
 
     @Named("evidenceDescription")
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = false)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "description", source = "description")
     EvidenceDTO toDtoEvidenceDescription(Evidence evidence);

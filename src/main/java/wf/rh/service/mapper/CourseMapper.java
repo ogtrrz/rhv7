@@ -25,12 +25,12 @@ public interface CourseMapper extends EntityMapper<CourseDTO, Course> {
     Course toEntity(CourseDTO courseDTO);
 
     @Named("courseId")
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = false)
     @Mapping(target = "id", source = "id")
     CourseDTO toDtoCourseId(Course course);
 
     @Named("trainingCode")
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = false)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "code", source = "code")
     TrainingDTO toDtoTrainingCode(Training training);
@@ -41,7 +41,7 @@ public interface CourseMapper extends EntityMapper<CourseDTO, Course> {
     }
 
     @Named("requirentsCode")
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = false)
     @Mapping(target = "id", source = "id")
     @Mapping(target = "code", source = "code")
     RequirentsDTO toDtoRequirentsCode(Requirents requirents);
