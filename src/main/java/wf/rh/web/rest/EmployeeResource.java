@@ -189,4 +189,38 @@ public class EmployeeResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    //////////////////////////////////////////////////////////////////
+
+    @GetMapping("/employees/secure")
+    public ResponseEntity<EmployeeDTO> getEmployeeById() {
+        log.debug("REST request to get Employee by id");
+        Optional<EmployeeDTO> employeeDTO = employeeService.findOneByUser();
+        return ResponseUtil.wrapOrNotFound(employeeDTO);
+    }
+
+    @PatchMapping(value = "/employees/secure/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<EmployeeDTO> partialUpdateEmployeeById(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody EmployeeDTO employeeDTO
+    ) throws URISyntaxException {
+        log.debug("REST request to partial update Employee partially : {}, {}", id, employeeDTO);
+        if (employeeDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, employeeDTO.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!employeeRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<EmployeeDTO> result = employeeService.partialUpdateEmployeeById(employeeDTO);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, employeeDTO.getId().toString())
+        );
+    }
 }

@@ -25,9 +25,12 @@ public class EmployeeService {
 
     private final EmployeeMapper employeeMapper;
 
-    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
+    private UserService userService;
+
+    public EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper, UserService userService) {
         this.employeeRepository = employeeRepository;
         this.employeeMapper = employeeMapper;
+        this.userService = userService;
     }
 
     /**
@@ -117,5 +120,33 @@ public class EmployeeService {
     public void delete(Long id) {
         log.debug("Request to delete Employee : {}", id);
         employeeRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<EmployeeDTO> findOneByUser() {
+        var u = userService.getUserWithAuthorities().get().getId();
+        //        var fn = userService.getUserWithAuthorities().get().getFirstName();
+        //        var ln = userService.getUserWithAuthorities().get().getLastName();
+        //        var em = userService.getUserWithAuthorities().get().getEmail();
+
+        log.debug("Request to get Employee : {}", u);
+        return employeeRepository.findOneWithEagerRelationships(u).map(employeeMapper::toDto);
+    }
+
+    public Optional<EmployeeDTO> partialUpdateEmployeeById(EmployeeDTO employeeDTO) {
+        var u = userService.getUserWithAuthorities().get().getId();
+        log.debug("Request to partially update Employee by id : {} {}", u, employeeDTO);
+        if (u == employeeDTO.getId()) {
+            return employeeRepository
+                .findById(employeeDTO.getId())
+                .map(existingEmployee -> {
+                    employeeMapper.partialUpdate(existingEmployee, employeeDTO);
+
+                    return existingEmployee;
+                })
+                .map(employeeRepository::save)
+                .map(employeeMapper::toDto);
+        }
+        return null;
     }
 }
